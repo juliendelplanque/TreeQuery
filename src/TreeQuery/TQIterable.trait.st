@@ -149,3 +149,18 @@ TQIterable >> depthFirstSelect: aBlock [
 TQIterable >> depthFirstSelect: aBlock as: aSequenceableCollectionClass [
 	^ self depthFirstIterator select: aBlock as: aSequenceableCollectionClass
 ]
+
+{ #category : #'enumerating - others' }
+TQIterable >> detectMax: aBlock [
+	^ self anyIterator detectMax: aBlock
+]
+
+{ #category : #'enumerating - others' }
+TQIterable >> detectMin: aBlock [
+	^ self anyIterator detectMin: aBlock
+]
+
+{ #category : #'enumerating - others' }
+TQIterable >> sum: aBlock [
+	^ self anyIterator sum: aBlock
+]

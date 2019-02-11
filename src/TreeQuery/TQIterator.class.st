@@ -167,7 +167,7 @@ TQIterator >> do: doBlock separatedBy: separatorBlock [
 		beforeFirst
 			ifTrue: [beforeFirst := false]
 			ifFalse: [separatorBlock value].
-		doBlock value: each]
+		doBlock value: each ]
 ]
 
 { #category : #testing }

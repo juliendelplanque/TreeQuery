@@ -93,6 +93,21 @@ TQIteratorTest >> testCount [
 ]
 
 { #category : #tests }
+TQIteratorTest >> testDetect [
+	self
+		assert: (iterator detect: [ :array | array allButFirst size = 2 ])
+		equals: (self iteratorWalk detect: [ :array | array allButFirst size = 2 ])
+]
+
+{ #category : #tests }
+TQIteratorTest >> testDetect2 [
+	self
+		should: [ iterator detect: [ :array | array allButFirst size = 10 ] ] raise: NotFound.
+	self
+		should: [ self iteratorWalk detect: [ :array | array allButFirst size = 10 ] ] raise: NotFound
+]
+
+{ #category : #tests }
 TQIteratorTest >> testDetectIfFound [
 	iterator detect: [ :array | array allButFirst size = 2 ] ifFound: [ :found |
 		self iteratorWalk detect: [ :array | array allButFirst size = 2 ] ifFound: [ :walkFound |
@@ -117,6 +132,15 @@ TQIteratorTest >> testDetectIfFoundIfNone2 [
 ]
 
 { #category : #tests }
+TQIteratorTest >> testDetectIfNone [
+	iterator detect: [ :array | array first = 10 ] ifNone: [
+		self iteratorWalk detect: [ :array | array first = 10 ] ifNone: [ 
+			^ self ] ].
+	
+	self fail
+]
+
+{ #category : #tests }
 TQIteratorTest >> testDetectMax [
 	self
 		assert: (iterator detectMax: [ :array | array first ])
@@ -128,6 +152,15 @@ TQIteratorTest >> testDetectMin [
 	self
 		assert: (iterator detectMin: [ :array | array first ])
 		equals: (self iteratorWalk detectMin: [ :array | array first ])
+]
+
+{ #category : #tests }
+TQIteratorTest >> testDo [
+	|i|
+	i := 1.
+	iterator do: [ :array |
+		self assertCollection: array equals: (self iteratorWalk at: i).
+		i := i + 1 ].
 ]
 
 { #category : #tests }

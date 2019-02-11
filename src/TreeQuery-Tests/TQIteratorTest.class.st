@@ -65,6 +65,13 @@ TQIteratorTest >> testAtEnd [
 ]
 
 { #category : #tests }
+TQIteratorTest >> testCollect [
+	self
+		assertCollection: (iterator collect: #first)
+		equals: (self iteratorWalk collect: #first as: Array)
+]
+
+{ #category : #tests }
 TQIteratorTest >> testCollectAs [
 	self
 		assertCollection: (iterator collect: #first as: Array)
@@ -81,8 +88,8 @@ TQIteratorTest >> testCollectAs2 [
 { #category : #tests }
 TQIteratorTest >> testCount [
 	self
-		assertCollection: (iterator count: [ :n | n first odd ])
-		equals: (self iteratorWalk count: [ :n | n first odd ])
+		assertCollection: (iterator sum: [ :n | n first ])
+		equals: (self iteratorWalk sum: [ :n | n first ])
 ]
 
 { #category : #tests }
@@ -116,6 +123,27 @@ TQIteratorTest >> testHasNext [
 		iterator next ].
 	
 	self deny: iterator hasNext
+]
+
+{ #category : #tests }
+TQIteratorTest >> testReject [
+	self
+		assertCollection: (iterator reject: [ :n | n first odd ])
+		equals: ((self iteratorWalk reject: [ :n | n first odd ]) as: Array)
+]
+
+{ #category : #tests }
+TQIteratorTest >> testRejectAs [
+	self
+		assertCollection: (iterator reject: [ :n | n first odd ] as: Array)
+		equals: ((self iteratorWalk reject: [ :n | n first odd ]) as: Array)
+]
+
+{ #category : #tests }
+TQIteratorTest >> testSelect [
+	self
+		assertCollection: (iterator select: [ :n | n first odd ])
+		equals: ((self iteratorWalk select: [ :n | n first odd ]) as: Array)
 ]
 
 { #category : #tests }

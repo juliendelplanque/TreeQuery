@@ -1,3 +1,8 @@
+"
+I provide enumeration methods to a tree-like object.
+
+My users just need to override #childrenSelector returning the selector of the method allowing to get the children from a node of the tree.
+"
 Trait {
 	#name : #TQIterable,
 	#category : #TreeQuery
@@ -82,6 +87,8 @@ TQIterable >> breadthFirstSelect: aBlock as: aSequenceableCollectionClass [
 
 { #category : #accessor }
 TQIterable >> childrenSelector [
+	"Returns the selector of the method that returns the children of a node.
+	 Should be overrided by clients of the trait."
 	^ self explicitRequirement
 ]
 

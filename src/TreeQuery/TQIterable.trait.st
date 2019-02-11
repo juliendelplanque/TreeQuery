@@ -50,6 +50,11 @@ TQIterable >> breadthFirstDo: aBlock [
 	^ self breadthFirstIterator do: aBlock
 ]
 
+{ #category : #'enumerating - breadth first' }
+TQIterable >> breadthFirstDo: aBlock separatedBy: separatorBlock [
+	^ self breadthFirstIterator do: aBlock separatedBy: separatorBlock
+]
+
 { #category : #accessor }
 TQIterable >> breadthFirstIterator [
 	^ TQBreadthFirstIterator root: self childrenBlock: self childrenSelector
@@ -123,6 +128,11 @@ TQIterable >> depthFirstDetect: aBlock ifNone: ifNoneBlock [
 { #category : #'enumerating - depth first' }
 TQIterable >> depthFirstDo: aBlock [
 	^ self depthFirstIterator do: aBlock
+]
+
+{ #category : #'enumerating - depth first' }
+TQIterable >> depthFirstDo: aBlock separatedBy: separatorBlock [
+	^ self depthFirstIterator do: aBlock separatedBy: separatorBlock
 ]
 
 { #category : #accessor }

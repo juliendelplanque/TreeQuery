@@ -107,10 +107,67 @@ TQIterator >> detect: aBlock ifNone: ifNoneBlock [
 ]
 
 { #category : #enumerating }
+TQIterator >> detectMax: aBlock [
+	"Evaluate aBlock with node of the receiver's nodes as the argument. 
+	Answer the element for which aBlock evaluates to the highest magnitude.
+	If collection empty, return nil."
+
+	| maxElement maxValue |
+	maxValue := nil.
+	self do: [:each |
+		| val |
+		maxValue
+			ifNotNil: [
+				(val := aBlock value: each) > maxValue ifTrue: [
+					maxElement := each.
+					maxValue := val]]
+			ifNil: ["first element"
+				maxElement := each.
+				maxValue := aBlock value: each ] ].
+	^ maxElement
+]
+
+{ #category : #enumerating }
+TQIterator >> detectMin: aBlock [
+	"Evaluate aBlock with each of the receiver's nodes as the argument. 
+	Answer the element for which aBlock evaluates to the lowest number.
+	If collection empty, return nil."
+
+	| minElement minValue |
+	minValue := nil.
+	self do: [:each |
+		| val |
+		minValue
+			ifNotNil: [
+				(val := aBlock value: each) < minValue ifTrue: [
+					minElement := each.
+					minValue := val]]
+			ifNil: ["first element"
+				minElement := each.
+				minValue := aBlock value: each ] ].
+	^ minElement
+]
+
+{ #category : #enumerating }
 TQIterator >> do: aBlock [
 	"Executes aBlock on all the objects returned by #next until #hasNextReturn false."
 	[ self hasNext ] whileTrue: [ 
 		aBlock value: self next ]
+]
+
+{ #category : #enumerating }
+TQIterator >> do: doBlock separatedBy: separatorBlock [
+	"Evaluate the doBlock for all nodes in the receiver,
+	and evaluate the separatorBlock between."
+
+	| beforeFirst | 
+	beforeFirst := true.
+	self do:
+		[:each |
+		beforeFirst
+			ifTrue: [beforeFirst := false]
+			ifFalse: [separatorBlock value].
+		doBlock value: each]
 ]
 
 { #category : #testing }
@@ -157,4 +214,15 @@ TQIterator >> select: aBlock as: aSequenceableCollectionClass [
 		self do: [ :child |
 		(aBlock value: child)
 			ifTrue: [ stream nextPut: child ] ] ]
+]
+
+{ #category : #enumerating }
+TQIterator >> sum: aBlock [
+	"Evaluate aBlock with each of the receiver's nodes as the argument. 
+	Return the sum of the answers."
+	| sum |
+	sum := 0.
+	self do: [:each | 
+		sum := (aBlock value: each) + sum].  
+	^ sum
 ]

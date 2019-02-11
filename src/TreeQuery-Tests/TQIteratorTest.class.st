@@ -117,6 +117,20 @@ TQIteratorTest >> testDetectIfFoundIfNone2 [
 ]
 
 { #category : #tests }
+TQIteratorTest >> testDetectMax [
+	self
+		assert: (iterator detectMax: [ :array | array first ])
+		equals: (self iteratorWalk detectMax: [ :array | array first ])
+]
+
+{ #category : #tests }
+TQIteratorTest >> testDetectMin [
+	self
+		assert: (iterator detectMin: [ :array | array first ])
+		equals: (self iteratorWalk detectMin: [ :array | array first ])
+]
+
+{ #category : #tests }
 TQIteratorTest >> testHasNext [
 	9 timesRepeat: [ 
 		self assert: iterator hasNext.
@@ -158,4 +172,11 @@ TQIteratorTest >> testSelectAs2 [
 	self
 		assertCollection: (iterator select: [ :n | n first even ] as: OrderedCollection)
 		equals: ((self iteratorWalk select: [ :n | n first even ]) as: OrderedCollection)
+]
+
+{ #category : #tests }
+TQIteratorTest >> testSum [
+	self
+		assertCollection: (iterator sum: [ :n | n first ])
+		equals: (self iteratorWalk sum: [ :n | n first ])
 ]

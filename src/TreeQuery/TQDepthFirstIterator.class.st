@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'visitStack'
 	],
-	#category : #TreeQuery
+	#category : #'TreeQuery-Core'
 }
 
 { #category : #example }

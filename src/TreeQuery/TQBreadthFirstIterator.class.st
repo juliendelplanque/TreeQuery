@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'visitQueue'
 	],
-	#category : #TreeQuery
+	#category : #'TreeQuery-Core'
 }
 
 { #category : #example }

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'iterator'
 	],
-	#category : #TreeQuery
+	#category : #'TreeQuery-Errors'
 }
 
 { #category : #signalling }

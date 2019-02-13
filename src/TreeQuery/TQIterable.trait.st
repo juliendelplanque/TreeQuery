@@ -5,7 +5,7 @@ My users just need to override #childrenSelector returning the selector of the m
 "
 Trait {
 	#name : #TQIterable,
-	#category : #TreeQuery
+	#category : #'TreeQuery-Traits'
 }
 
 { #category : #accessor }

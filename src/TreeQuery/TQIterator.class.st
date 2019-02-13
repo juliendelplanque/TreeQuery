@@ -13,7 +13,7 @@ Class {
 		'childrenBlock',
 		'root'
 	],
-	#category : #TreeQuery
+	#category : #'TreeQuery-Core'
 }
 
 { #category : #'instance creation' }
@@ -51,6 +51,11 @@ TQIterator >> anySatisfy: aBlock [
 { #category : #testing }
 TQIterator >> atEnd [
 	^ self hasNext not
+]
+
+{ #category : #accessing }
+TQIterator >> childrenBlock [
+	^ childrenBlock
 ]
 
 { #category : #enumerating }

@@ -8,7 +8,7 @@ Class {
 		'tree',
 		'iterator'
 	],
-	#category : #'TreeQuery-Tests'
+	#category : #'TreeQuery-Tests-Core'
 }
 
 { #category : #testing }

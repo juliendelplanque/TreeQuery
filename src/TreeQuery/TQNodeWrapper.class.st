@@ -8,36 +8,31 @@ Class {
 	#category : #'TreeQuery-Query'
 }
 
-{ #category : #'reflective operations' }
-TQNodeWrapper >> doesNotUnderstand: aMessage [
-	^ self tqNode perform: aMessage selector withArguments: aMessage arguments
-]
-
 { #category : #accessing }
-TQNodeWrapper >> tqChildren [
-	^ (self tqChildrenBlock value: self tqNode) collect: [ :node |
-			self class new
-				tqNode: node;
-				tqChildrenBlock: self tqChildrenBlock;
-				yourself ]
-]
-
-{ #category : #accessing }
-TQNodeWrapper >> tqChildrenBlock [
+TQNodeWrapper >> childrenBlock [
 	^ tqChildrenBlock
 ]
 
 { #category : #accessing }
-TQNodeWrapper >> tqChildrenBlock: anObject [
+TQNodeWrapper >> childrenBlock: anObject [
 	tqChildrenBlock := anObject
 ]
 
 { #category : #accessing }
-TQNodeWrapper >> tqNode [
+TQNodeWrapper >> wrappedChildren [
+	^ (self childrenBlock value: self wrappedNode) collect: [ :node |
+			self class new
+				wrappedNode: node;
+				childrenBlock: self childrenBlock;
+				yourself ]
+]
+
+{ #category : #accessing }
+TQNodeWrapper >> wrappedNode [
 	^ tqNode
 ]
 
 { #category : #accessing }
-TQNodeWrapper >> tqNode: anObject [
+TQNodeWrapper >> wrappedNode: anObject [
 	tqNode := anObject
 ]

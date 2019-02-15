@@ -1,6 +1,6 @@
 Class {
 	#name : #TQCompositePredicate,
-	#superclass : #TQAbstractPredicate,
+	#superclass : #TQPredicate,
 	#instVars : [
 		'predicate',
 		'children'
@@ -27,13 +27,13 @@ TQCompositePredicate >> children: anObject [
 ]
 
 { #category : #testing }
-TQCompositePredicate >> matches: aNode [
+TQCompositePredicate >> matches: aTQNodeWrapper [
 	| matchedTreeChildren |
-	(self predicate matches: aNode)
+	(self predicate matches: aTQNodeWrapper)
 		ifFalse: [ ^ false ].
 	
 	matchedTreeChildren := self children collect: [ :queryChild |
-		aNode tqChildren
+		aTQNodeWrapper wrappedChildren
 			detect: [ :treeChild | queryChild matches: treeChild ]
 			ifNone: [ ^ false ] ].
 	^ matchedTreeChildren asIdentitySet size = matchedTreeChildren size

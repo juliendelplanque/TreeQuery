@@ -15,6 +15,11 @@ TreeQuery >> breadthFirst [
 ]
 
 { #category : #configuring }
+TreeQuery >> collectMatches [
+	self searchStrategyClass: TQCollectMatches
+]
+
+{ #category : #configuring }
 TreeQuery >> depthFirst [
 	self iteratorClass: TQDepthFirstIterator
 ]

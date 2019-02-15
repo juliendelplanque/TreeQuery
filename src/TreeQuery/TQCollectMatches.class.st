@@ -7,5 +7,5 @@ Class {
 { #category : #searching }
 TQCollectMatches >> search: aTQIterator [
 	^ (aTQIterator select: [ :node |
-		self predicate matches: node ]) collect: #tqNode
+		self predicate matches: node ]) collect: #wrappedNode
 ]

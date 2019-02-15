@@ -7,6 +7,6 @@ Class {
 { #category : #accessing }
 TQNodeWrapperIterator >> next [
 	^ TQNodeWrapper new
-		tqNode: self decoratedIterator next;
-		tqChildrenBlock: self childrenBlock
+		wrappedNode: self decoratedIterator next;
+		childrenBlock: self childrenBlock
 ]

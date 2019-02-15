@@ -1,3 +1,10 @@
+"
+I wrap a node of the tree to visit.
+
+My #wrappedNode instance variable contains the object we wrap to make it act as a tree.
+My #childrenBlock instance variable contains a Block defining how to access the children of the wrapped node.
+My #wrappedChildren method allows one to access the children of the node I wrap themselves wrapped.
+"
 Class {
 	#name : #TQNodeWrapper,
 	#superclass : #Object,

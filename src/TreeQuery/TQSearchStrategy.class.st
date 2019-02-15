@@ -7,13 +7,6 @@ Class {
 	#category : #'TreeQuery-Query'
 }
 
-{ #category : #'instance creation' }
-TQSearchStrategy class >> decoratedElement: aTQElement [
-	^ self new
-		decoratedElement: aTQElement;
-		yourself
-]
-
 { #category : #accessing }
 TQSearchStrategy >> predicate [
 	^ predicate

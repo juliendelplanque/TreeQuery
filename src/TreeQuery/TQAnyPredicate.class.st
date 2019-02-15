@@ -5,7 +5,7 @@ I can only return true to #matches: message.
 "
 Class {
 	#name : #TQAnyPredicate,
-	#superclass : #TQPredicate,
+	#superclass : #TQAtomicPredicate,
 	#category : #'TreeQuery-Query'
 }
 

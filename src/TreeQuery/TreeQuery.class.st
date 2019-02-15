@@ -10,6 +10,20 @@ Class {
 }
 
 { #category : #configuring }
+TreeQuery class >> breadthFirst [
+	^ self new
+		breadthFirst;
+		yourself
+]
+
+{ #category : #configuring }
+TreeQuery class >> depthFirst [
+	^ self new
+		depthFirst;
+		yourself
+]
+
+{ #category : #configuring }
 TreeQuery >> breadthFirst [
 	self iteratorClass: TQBreadthFirstIterator
 ]

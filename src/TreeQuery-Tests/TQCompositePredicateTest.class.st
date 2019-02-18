@@ -33,3 +33,18 @@ TQCompositePredicateTest >> testMatches2 [
 TQCompositePredicateTest >> testMatches3 [
 	self deny: (compositePredicate matches: (TQNodeWrapper wrap: #('str' (1) (2)) childrenBlock: #allButFirst))
 ]
+
+{ #category : #test }
+TQCompositePredicateTest >> testMatches4 [
+	self deny: (compositePredicate matches: (TQNodeWrapper wrap: #('str' (1)) childrenBlock: #allButFirst))
+]
+
+{ #category : #test }
+TQCompositePredicateTest >> testMatches5 [
+	self deny: (compositePredicate matches: (TQNodeWrapper wrap: #('str' (1 (2))) childrenBlock: #allButFirst))
+]
+
+{ #category : #test }
+TQCompositePredicateTest >> testMatches6 [
+	self deny: (compositePredicate matches: (TQNodeWrapper wrap: #(0 (1 (2))) childrenBlock: #allButFirst))
+]

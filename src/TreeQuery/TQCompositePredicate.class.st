@@ -28,13 +28,13 @@ TQCompositePredicate >> children: anObject [
 
 { #category : #testing }
 TQCompositePredicate >> matches: aTQNodeWrapper [
-	| matchedTreeChildren wrappedChildren |
+	| wrappedChildren |
 	(self predicate matches: aTQNodeWrapper)
 		ifFalse: [ ^ false ].
 	
 	wrappedChildren := aTQNodeWrapper wrappedChildren copy asOrderedCollection.
 	
-	matchedTreeChildren := self children do: [ :queryChild |
+	self children do: [ :queryChild |
 		wrappedChildren
 			detect: [ :treeChild | queryChild matches: treeChild ]
 			ifFound: [ :found | wrappedChildren remove: found ]

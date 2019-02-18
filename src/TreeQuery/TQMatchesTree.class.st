@@ -1,10 +1,10 @@
 Class {
-	#name : #TQMatchesTreeSoft,
+	#name : #TQMatchesTree,
 	#superclass : #TQSearchStrategy,
 	#category : #'TreeQuery-Query'
 }
 
 { #category : #searching }
-TQMatchesTreeSoft >> search: aTQIterator [
+TQMatchesTree >> search: aTQIterator [
 	^ self predicate matches: aTQIterator next
 ]

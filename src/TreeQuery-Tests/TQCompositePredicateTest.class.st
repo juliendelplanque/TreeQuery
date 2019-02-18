@@ -48,3 +48,8 @@ TQCompositePredicateTest >> testMatches5 [
 TQCompositePredicateTest >> testMatches6 [
 	self deny: (compositePredicate matches: (TQNodeWrapper wrap: #(0 (1 (2))) childrenBlock: #allButFirst))
 ]
+
+{ #category : #test }
+TQCompositePredicateTest >> testMatches7 [
+	self assert: (compositePredicate matches: (TQNodeWrapper wrap: #(2 (1) ('str') ($a)) childrenBlock: #allButFirst))
+]

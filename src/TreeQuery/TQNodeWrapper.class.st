@@ -15,6 +15,14 @@ Class {
 	#category : #'TreeQuery-Query'
 }
 
+{ #category : #'instance creation' }
+TQNodeWrapper class >> wrap: anObject childrenBlock: aBlock [
+	^ self new
+		wrappedNode: anObject;
+		childrenBlock: aBlock;
+		yourself
+]
+
 { #category : #accessing }
 TQNodeWrapper >> childrenBlock [
 	^ tqChildrenBlock

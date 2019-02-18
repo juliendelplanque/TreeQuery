@@ -16,8 +16,13 @@ TQPathPredicate class >> path: aCollectionOfTQPredicat [
 
 { #category : #composing }
 TQPathPredicate >> / aTQPredicate [
+	^ self concatenateWith: aTQPredicate
+]
+
+{ #category : #composing }
+TQPathPredicate >> concatenateWith: aTQAtomicPredicate [
 	^ self
-		path: self path , { aTQPredicate };
+		path: self path , { aTQAtomicPredicate };
 		yourself
 ]
 

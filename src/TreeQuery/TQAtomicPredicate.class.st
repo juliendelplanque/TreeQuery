@@ -20,6 +20,6 @@ TQAtomicPredicate >> children: aCollectionOfTQPredicates [
 ]
 
 { #category : #composing }
-TQAtomicPredicate >> hardChildren: aCollectionOfTQPredicates [
-	^ TQHardCompositePredicate predicate: self children: aCollectionOfTQPredicates
+TQAtomicPredicate >> strictChildren: aCollectionOfTQPredicates [
+	^ TQStrictCompositePredicate predicate: self children: aCollectionOfTQPredicates
 ]

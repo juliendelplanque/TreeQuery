@@ -1,11 +1,11 @@
 Class {
-	#name : #TQHardCompositePredicate,
+	#name : #TQStrictCompositePredicate,
 	#superclass : #TQCompositePredicate,
 	#category : #'TreeQuery-Query'
 }
 
 { #category : #testing }
-TQHardCompositePredicate >> matches: aTQNodeWrapper [
+TQStrictCompositePredicate >> matches: aTQNodeWrapper [
 	| wrappedChildren |
 	(self predicate matches: aTQNodeWrapper)
 		ifFalse: [ ^ false ].

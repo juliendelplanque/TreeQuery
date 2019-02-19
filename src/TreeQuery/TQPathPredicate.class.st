@@ -39,6 +39,13 @@ TQPathPredicate >> matches: aTQNodeWrapper [
 		anySatisfy: [ :wrappedChild | withoutFirst matches: wrappedChild ].
 ]
 
+{ #category : #composing }
+TQPathPredicate >> parent: aTQAtomicPredicate [
+	^ self
+		path: { aTQAtomicPredicate } , self path;
+		yourself
+]
+
 { #category : #accessing }
 TQPathPredicate >> path [
 	^ path

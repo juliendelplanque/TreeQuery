@@ -49,6 +49,16 @@ TQPathPredicate >> path: anObject [
 	path := anObject
 ]
 
+{ #category : #composing }
+TQPathPredicate >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPut: $(.
+	self path
+		do: [ :predicate | predicate printOn: aStream ]
+		separatedBy: [ aStream nextPut: $/ ].
+	aStream nextPut: $)
+]
+
 { #category : #converting }
 TQPathPredicate >> withoutFirstPredicate [
 	^ self class path: self path allButFirst

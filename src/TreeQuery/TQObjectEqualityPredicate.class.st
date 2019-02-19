@@ -28,3 +28,11 @@ TQObjectEqualityPredicate >> object [
 TQObjectEqualityPredicate >> object: anObject [
 	object := anObject
 ]
+
+{ #category : #printing }
+TQObjectEqualityPredicate >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPut: $(.
+	self object printOn: aStream.
+	aStream nextPut: $)
+]

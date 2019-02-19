@@ -13,3 +13,9 @@ Class {
 TQAnyPredicate >> matches: aTQNodeWrapper [
 	^ true
 ]
+
+{ #category : #printing }
+TQAnyPredicate >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPutAll: '(*)'
+]

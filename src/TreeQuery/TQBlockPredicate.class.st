@@ -31,3 +31,11 @@ TQBlockPredicate >> predicateBlock [
 TQBlockPredicate >> predicateBlock: anObject [
 	predicateBlock := anObject
 ]
+
+{ #category : #printing }
+TQBlockPredicate >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPut: $(.
+	self predicateBlock printOn: aStream.
+	aStream nextPut: $)
+]

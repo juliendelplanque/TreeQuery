@@ -29,6 +29,11 @@ TreeQuery >> breadthFirst [
 ]
 
 { #category : #configuring }
+TreeQuery >> checkMatch [
+	self searchStrategyClass: TQMatchesAnywhere
+]
+
+{ #category : #configuring }
 TreeQuery >> collectMatches [
 	self searchStrategyClass: TQCollectMatches
 ]
@@ -51,6 +56,11 @@ TreeQuery >> iteratorClass: anObject [
 { #category : #configuring }
 TreeQuery >> matchAnywhere [
 	self searchStrategyClass: TQMatchesAnywhere
+]
+
+{ #category : #configuring }
+TreeQuery >> matchEverywhere [
+	self searchStrategyClass: TQMatchesEverywhere
 ]
 
 { #category : #accessing }
@@ -80,9 +90,4 @@ TreeQuery >> searchStrategyClass [
 { #category : #accessing }
 TreeQuery >> searchStrategyClass: anObject [
 	searchStrategyClass := anObject
-]
-
-{ #category : #configuring }
-TreeQuery >> softMatch [
-	self searchStrategyClass: TQMatchesAnywhere
 ]

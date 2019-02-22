@@ -126,13 +126,19 @@ TreeQuery breadthFirst collectMatches
 Is there an abstract class in Pharo that has at least one subclass for which the name begins with `'A'` and one subclass for which the name begins with `'Z'`:
 
 ```
-TreeQuery new
-	breadthFirst;
-	checkMatch;
+TreeQuery breadthFirst checkMatch
 	predicate: #isAbstract asTQPredicate
 			children: { 
 				[ :class | class name beginsWith: 'A' ] asTQPredicate.
 				[ :class | class name beginsWith: 'Z' ] asTQPredicate
 			};
 	runOn: Object childrenBlock: #subclasses.
+```
+
+Get all items from the world menu that have a name (i.e. return value of `#name` is not nil) and the name begins with `T`.
+```
+TreeQuery breadthFirst collectMatches
+	predicate: ([ :menuItem | menuItem name isNotNil and: [ menuItem name beginsWith: 'T' ] ] asTQPredicate);
+	runOn: WorldState new menuBuilder
+	childrenBlock: [ :menuItem | menuItem itemList ifNil: [ #() ] ]. "an Array(a MenuRegistration ( #Tools )  a MenuRegistration ( #'Test Runner' )  a MenuRegistration ( #Transcript )  a MenuRegistration ( #'Time Profiler' )  a MenuRegistration ( #'Toggle full screen mode' ) )"
 ```

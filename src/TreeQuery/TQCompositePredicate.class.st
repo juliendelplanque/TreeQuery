@@ -3,7 +3,7 @@ Class {
 	#superclass : #TQPredicate,
 	#instVars : [
 		'predicate',
-		'children'
+		'predicatesForChildren'
 	],
 	#category : #'TreeQuery-Query'
 }
@@ -18,12 +18,14 @@ TQCompositePredicate class >> predicate: aTQPredicate children: aCollectionOfTQP
 
 { #category : #accessing }
 TQCompositePredicate >> children [
-	^ children
+	self deprecated: 'Use #predicatesForChildren instead.'.
+	^ self predicatesForChildren
 ]
 
 { #category : #accessing }
 TQCompositePredicate >> children: anObject [
-	children := anObject
+	self deprecated: 'Use #predicatesForChildren: instead.'.
+	self predicatesForChildren: anObject
 ]
 
 { #category : #testing }
@@ -44,6 +46,17 @@ TQCompositePredicate >> matches: aTQNodeWrapper [
 ]
 
 { #category : #accessing }
+TQCompositePredicate >> matchingChildrenFor: aTQNodeWrapper [
+	| wrappedChildren |
+	wrappedChildren := aTQNodeWrapper wrappedChildren copy asOrderedCollection.
+	^ self children collect: [ :queryChild |
+		wrappedChildren
+			detect: [ :treeChild | queryChild matches: treeChild ]
+			ifFound: [ :found | wrappedChildren remove: found. found ]
+			ifNone: [ nil ] ] thenReject: #isNil
+]
+
+{ #category : #accessing }
 TQCompositePredicate >> predicate [
 	^ predicate
 ]
@@ -51,4 +64,14 @@ TQCompositePredicate >> predicate [
 { #category : #accessing }
 TQCompositePredicate >> predicate: anObject [
 	predicate := anObject
+]
+
+{ #category : #accessing }
+TQCompositePredicate >> predicatesForChildren [
+	^ predicatesForChildren
+]
+
+{ #category : #accessing }
+TQCompositePredicate >> predicatesForChildren: anObject [
+	predicatesForChildren := anObject
 ]

@@ -163,6 +163,18 @@ TQIteratorTest >> testDo [
 		i := i + 1 ].
 ]
 
+{ #category : #test }
+TQIteratorTest >> testDoSeparatedBy [
+	|i separationsCount|
+	i := 1.
+	separationsCount := 0.
+	iterator do: [ :array |
+		self assertCollection: array equals: (self iteratorWalk at: i).
+		i := i + 1 ] separatedBy: [ separationsCount := separationsCount + 1 ].
+	
+	self assert: separationsCount equals: self iteratorWalk size - 1
+]
+
 { #category : #tests }
 TQIteratorTest >> testHasNext [
 	9 timesRepeat: [ 

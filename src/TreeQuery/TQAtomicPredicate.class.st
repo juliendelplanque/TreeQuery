@@ -11,12 +11,23 @@ TQAtomicPredicate >> / aTQPredicate [
 
 { #category : #composing }
 TQAtomicPredicate >> > aCollectionOfTQPredicates [
-	^ self children: aCollectionOfTQPredicates
+	^ self predicatesForChildren: aCollectionOfTQPredicates
 ]
 
 { #category : #composing }
 TQAtomicPredicate >> children: aCollectionOfTQPredicates [
-	^ TQCompositePredicate predicate: self children: aCollectionOfTQPredicates
+	self
+		deprecated: 'Use #predicatesForChildren: instead.'
+		transformWith: '`@receiver children: `@statements1' 
+						-> '`@receiver predicatesForChildren: `@statements1'.
+	^ self predicatesForChildren: aCollectionOfTQPredicates
+]
+
+{ #category : #extracting }
+TQAtomicPredicate >> extract: aTQNodeWrapper [
+	^ TQNode new
+			data: aTQNodeWrapper wrappedNode;
+			yourself
 ]
 
 { #category : #composing }
@@ -25,6 +36,20 @@ TQAtomicPredicate >> parent: aTQAtomicPredicate [
 ]
 
 { #category : #composing }
+TQAtomicPredicate >> predicatesForChildren: aCollectionOfTQPredicates [
+	^ TQCompositePredicate predicate: self children: aCollectionOfTQPredicates
+]
+
+{ #category : #composing }
 TQAtomicPredicate >> strictChildren: aCollectionOfTQPredicates [
+	self
+		deprecated: 'Use #strictPredicatesForChildren: instead.'
+		transformWith: '`@receiver strictChildren: `@statements1' 
+						-> '`@receiver strictPredicatesForChildren: `@statements1'.
+	^ self strictPredicatesForChildren: aCollectionOfTQPredicates
+]
+
+{ #category : #composing }
+TQAtomicPredicate >> strictPredicatesForChildren: aCollectionOfTQPredicates [
 	^ TQStrictCompositePredicate predicate: self children: aCollectionOfTQPredicates
 ]

@@ -213,3 +213,10 @@ TQIteratorTest >> testSum [
 		assertCollection: (iterator sum: [ :n | n first ])
 		equals: (self iteratorWalk sum: [ :n | n first ])
 ]
+
+{ #category : #tests }
+TQIteratorTest >> testUpToEnd [
+	self
+		assertCollection: (iterator upToEnd)
+		equals: (self iteratorWalk collect: #yourself as: Array)
+]

@@ -231,3 +231,8 @@ TQIterator >> sum: aBlock [
 		sum := (aBlock value: each) + sum].  
 	^ sum
 ]
+
+{ #category : #accessing }
+TQIterator >> upToEnd [
+	^ self collect: #yourself as: Array
+]

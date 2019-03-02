@@ -185,6 +185,14 @@ TQIteratorTest >> testHasNext [
 ]
 
 { #category : #tests }
+TQIteratorTest >> testNext [
+	self iteratorWalk do: [ :array |
+		self assert: iterator next first equals: array first ].
+	
+	self should: [ iterator next ] raise: TQIteratorIsAtEnd
+]
+
+{ #category : #tests }
 TQIteratorTest >> testReject [
 	self
 		assertCollection: (iterator reject: [ :n | n first odd ])

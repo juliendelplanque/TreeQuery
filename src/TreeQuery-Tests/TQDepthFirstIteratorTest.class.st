@@ -18,11 +18,3 @@ TQDepthFirstIteratorTest >> setUp [
 	super setUp.
 	iterator := TQDepthFirstIterator root: tree childrenBlock: #allButFirst
 ]
-
-{ #category : #tests }
-TQDepthFirstIteratorTest >> testNext [
-	#(1 2 3 4 5 6 7 8 9) do: [ :i |
-		self assert: iterator next first equals: i ].
-	
-	self should: [ iterator next ] raise: TQIteratorIsAtEnd
-]

@@ -5,11 +5,5 @@ SmalltalkCISpec {
             #directory : 'src',
             #platforms : [ #pharo ]
         }
-    ],
-    #testing : {
-        #categories : [ 'TreeQuery-Tests' ],
-        #coverage : {
-            #categories : [ 'TreeQuery-Tests' ]
-    }
-  }
+    ]
 }

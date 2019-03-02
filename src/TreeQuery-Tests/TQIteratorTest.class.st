@@ -41,6 +41,31 @@ TQIteratorTest >> setUp [
 				)
 ]
 
+{ #category : #test }
+TQIteratorTest >> testAllButFirst [
+	self assertCollection: (iterator allButFirst: 1) equals: (self iteratorWalk allButFirst: 1)
+]
+
+{ #category : #test }
+TQIteratorTest >> testAllButFirst2 [
+	self assertCollection: (iterator allButFirst: 2) equals: (self iteratorWalk allButFirst: 2)
+]
+
+{ #category : #test }
+TQIteratorTest >> testAllButFirst3 [
+	self assertCollection: (iterator allButFirst: 3) equals: (self iteratorWalk allButFirst: 3).
+]
+
+{ #category : #test }
+TQIteratorTest >> testAllButFirst4 [
+	self should: [ iterator allButFirst: self iteratorWalk size + 1 ] raise: TQIteratorIsAtEnd
+]
+
+{ #category : #test }
+TQIteratorTest >> testAllButFirst5 [
+	self assertCollection: (iterator allButFirst: self iteratorWalk size) equals: (self iteratorWalk allButFirst: self iteratorWalk size).
+]
+
 { #category : #tests }
 TQIteratorTest >> testAllSatisfy [
 	self

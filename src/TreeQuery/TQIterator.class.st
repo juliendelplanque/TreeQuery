@@ -28,6 +28,22 @@ TQIterator class >> root: anObject childrenBlock: aBlock [
 		yourself
 ]
 
+{ #category : #accessing }
+TQIterator >> allButFirst [
+	"Answer an array containing all but the first element.
+	 Raise an error if there are not enough elements."
+
+	^ self allButFirst: 1
+]
+
+{ #category : #accessing }
+TQIterator >> allButFirst: n [
+	"Answer an array  containing all but the first n elements.
+	 Raise an error if there are not enough elements."
+	n timesRepeat: [ self next ].
+	^ self upToEnd
+]
+
 { #category : #enumerating }
 TQIterator >> allSatisfy: aBlock [
 	"Evaluate aBlock with the nodes of the receiver.

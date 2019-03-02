@@ -47,14 +47,21 @@ TQCompositePredicate >> matchingChildrenFor: aTQNodeWrapper [
 ]
 
 { #category : #accessing }
-TQCompositePredicate >> matchingChildrenFor: aTQNodeWrapper ifNotMatchedPredicate: aBlock [
+TQCompositePredicate >> matchingChildrenFor: aTQNodeWrapper collect: collectBlock ifNotMatchedPredicate: aBlock [
 	| wrappedChildren |
 	wrappedChildren := aTQNodeWrapper wrappedChildren copy asOrderedCollection.
 	^ self predicatesForChildren collect: [ :queryChild |
 		wrappedChildren
 			detect: [ :treeChild | queryChild matches: treeChild ]
-			ifFound: [ :found | wrappedChildren remove: found. found ]
+			ifFound: [ :found | 
+				wrappedChildren remove: found.
+				collectBlock value: found ]
 			ifNone: [ aBlock cull: queryChild ] ]
+]
+
+{ #category : #accessing }
+TQCompositePredicate >> matchingChildrenFor: aTQNodeWrapper ifNotMatchedPredicate: aBlock [
+	^ self matchingChildrenFor: aTQNodeWrapper collect: #yourself ifNotMatchedPredicate: aBlock
 ]
 
 { #category : #accessing }

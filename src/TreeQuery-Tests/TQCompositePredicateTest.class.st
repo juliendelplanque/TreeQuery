@@ -61,9 +61,29 @@ TQCompositePredicateTest >> testMatchingChildrenFor [
 	| matchingChildren |
 	matchingChildren := (compositePredicate matchingChildrenFor: (TQNodeWrapper wrap: #(2 (1) ('str')) childrenBlock: #allButFirst)).
 	
+	self assert: matchingChildren size equals: 2.
+	
 	self assert: matchingChildren first wrappedNode equals: #('str').
 	self assert: matchingChildren first childrenBlock equals: #allButFirst.
 	
 	self assert: matchingChildren second wrappedNode equals: #(1).
 	self assert: matchingChildren second childrenBlock equals: #allButFirst.
+]
+
+{ #category : #test }
+TQCompositePredicateTest >> testMatchingChildrenForIfNotMatchedPredicate [
+	| matchingChildren |
+	matchingChildren := (compositePredicate matchingChildrenFor: (TQNodeWrapper wrap: #(2 (1)) childrenBlock: #allButFirst) ifNotMatchedPredicate: [ 42 ]).
+	
+	self assert: matchingChildren size equals: 2.
+	
+	self assert: matchingChildren first equals: 42.
+	
+	self assert: matchingChildren second wrappedNode equals: #(1).
+	self assert: matchingChildren second childrenBlock equals: #allButFirst.
+]
+
+{ #category : #test }
+TQCompositePredicateTest >> testMatchingChildrenForWithUnmatchedPredicate [
+	self should: [ compositePredicate matchingChildrenFor: (TQNodeWrapper wrap: #(2 (1) ) childrenBlock: #allButFirst) ] raise: TQPredicateWasNotMatched.
 ]

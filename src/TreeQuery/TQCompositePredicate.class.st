@@ -30,30 +30,31 @@ TQCompositePredicate >> children: anObject [
 
 { #category : #testing }
 TQCompositePredicate >> matches: aTQNodeWrapper [
-	| wrappedChildren |
 	(self predicate matches: aTQNodeWrapper)
 		ifFalse: [ ^ false ].
 	
-	wrappedChildren := aTQNodeWrapper wrappedChildren copy asOrderedCollection.
-	
-	self children do: [ :queryChild |
-		wrappedChildren
-			detect: [ :treeChild | queryChild matches: treeChild ]
-			ifFound: [ :found | wrappedChildren remove: found ]
-			ifNone: [ ^ false ] ].
+	self matchingChildrenFor: aTQNodeWrapper ifNotMatchedPredicate: [ ^ false ].
 		
 	^ true
 ]
 
 { #category : #accessing }
 TQCompositePredicate >> matchingChildrenFor: aTQNodeWrapper [
+	^ self
+		matchingChildrenFor: aTQNodeWrapper
+		ifNotMatchedPredicate: [ :notMatchedPredicate | 
+			TQPredicateWasNotMatched signal: notMatchedPredicate ]
+]
+
+{ #category : #accessing }
+TQCompositePredicate >> matchingChildrenFor: aTQNodeWrapper ifNotMatchedPredicate: aBlock [
 	| wrappedChildren |
 	wrappedChildren := aTQNodeWrapper wrappedChildren copy asOrderedCollection.
-	^ self children collect: [ :queryChild |
+	^ self predicatesForChildren collect: [ :queryChild |
 		wrappedChildren
 			detect: [ :treeChild | queryChild matches: treeChild ]
 			ifFound: [ :found | wrappedChildren remove: found. found ]
-			ifNone: [ nil ] ] thenReject: #isNil
+			ifNone: [ aBlock cull: queryChild ] ]
 ]
 
 { #category : #accessing }

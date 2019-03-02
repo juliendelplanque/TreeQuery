@@ -6,17 +6,10 @@ Class {
 
 { #category : #testing }
 TQStrictCompositePredicate >> matches: aTQNodeWrapper [
-	| wrappedChildren |
+	| matchedChildren |
 	(self predicate matches: aTQNodeWrapper)
 		ifFalse: [ ^ false ].
+	matchedChildren := (self matchingChildrenFor: aTQNodeWrapper ifNotMatchedPredicate: [ ^ false ]).
 	
-	wrappedChildren := aTQNodeWrapper wrappedChildren copy asOrderedCollection.
-	
-	self children do: [ :queryChild |
-		wrappedChildren
-			detect: [ :treeChild | queryChild matches: treeChild ]
-			ifFound: [ :found | wrappedChildren remove: found ]
-			ifNone: [ ^ false ] ].
-		
-	^ wrappedChildren isEmpty
+	^ matchedChildren size = aTQNodeWrapper wrappedChildren size
 ]

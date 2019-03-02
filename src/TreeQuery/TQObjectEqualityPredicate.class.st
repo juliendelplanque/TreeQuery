@@ -1,3 +1,6 @@
+"
+Matches if my #object is equal to the wrapped object in the node provided to #matches:.
+"
 Class {
 	#name : #TQObjectEqualityPredicate,
 	#superclass : #TQAtomicPredicate,

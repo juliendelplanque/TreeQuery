@@ -1,4 +1,4 @@
-# TreeQuery
+# TreeQuery [![Build Status](https://travis-ci.org/juliendelplanque/TreeQuery.svg?branch=master)](https://travis-ci.org/juliendelplanque/TreeQuery)
 A framework allowing to manipulate tree data structures easily in Pharo.
 
 ## Install

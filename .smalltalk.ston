@@ -1,0 +1,15 @@
+SmalltalkCISpec {
+    #loading : [
+        SCIMetacelloLoadSpec {
+            #baseline : 'TreeQuery',
+            #directory : 'src',
+            #platforms : [ #pharo ]
+        }
+    ],
+    #testing : {
+        #categories : [ 'TreeQuery-Tests' ],
+        #coverage : {
+            #categories : [ 'TreeQuery-Tests' ]
+    }
+  }
+}

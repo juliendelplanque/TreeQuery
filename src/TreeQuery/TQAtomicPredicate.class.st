@@ -6,7 +6,7 @@ Class {
 
 { #category : #composing }
 TQAtomicPredicate >> / aTQPredicate [
-	^ TQPathPredicate path: { self . aTQPredicate }
+	^ TQChildPathPredicate path: { self . aTQPredicate }
 ]
 
 { #category : #composing }

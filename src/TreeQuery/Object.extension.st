@@ -6,6 +6,18 @@ Object >> asTQPredicate [
 ]
 
 { #category : #'*TreeQuery' }
+Object >> breadthFirstIterator: childrenBlock [
+	^ TreeIterator breadthFirst
+			root: self childrenBlock: childrenBlock
+]
+
+{ #category : #'*TreeQuery' }
+Object >> depthFirstIterator: childrenBlock [
+	^ TreeIterator depthFirst
+			root: self childrenBlock: childrenBlock
+]
+
+{ #category : #'*TreeQuery' }
 Object >> wrappedUsingChildrenBlock: aBlock [
 	^ TQNodeWrapper wrap: self childrenBlock: aBlock
 ]

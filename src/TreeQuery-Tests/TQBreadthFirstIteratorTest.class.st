@@ -3,7 +3,7 @@ A TQBreadthFirstIteratorTest is a test class for testing the behavior of TQBread
 "
 Class {
 	#name : #TQBreadthFirstIteratorTest,
-	#superclass : #TQIteratorTest,
+	#superclass : #TreeIteratorTest,
 	#category : #'TreeQuery-Tests-Core'
 }
 

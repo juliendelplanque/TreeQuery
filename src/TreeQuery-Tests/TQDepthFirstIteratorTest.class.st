@@ -3,7 +3,7 @@ A TQDepthFirstIteratorTest is a test class for testing the behavior of TQDepthFi
 "
 Class {
 	#name : #TQDepthFirstIteratorTest,
-	#superclass : #TQIteratorTest,
+	#superclass : #TreeIteratorTest,
 	#category : #'TreeQuery-Tests-Core'
 }
 

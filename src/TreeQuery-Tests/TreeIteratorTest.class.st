@@ -1,8 +1,8 @@
 "
-A TQIteratorTest is a test class for testing the behavior of TQIterator
+A TreeIteratorTest is a test class for testing the behavior of TreeIterator
 "
 Class {
-	#name : #TQIteratorTest,
+	#name : #TreeIteratorTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'tree',
@@ -12,24 +12,24 @@ Class {
 }
 
 { #category : #testing }
-TQIteratorTest class >> isAbstract [
-	^ self = TQIteratorTest
+TreeIteratorTest class >> isAbstract [
+	^ self = TreeIteratorTest
 ]
 
 { #category : #accessing }
-TQIteratorTest >> iteratorParentWalk [
+TreeIteratorTest >> iteratorParentWalk [
 	"Returns the parents of nodes one-by-one as encountered by the iterator during the walk."
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-TQIteratorTest >> iteratorWalk [
+TreeIteratorTest >> iteratorWalk [
 	"Returns the nodes one-by-one as encountered by the iterator during the walk."
 	^ self subclassResponsibility
 ]
 
 { #category : #running }
-TQIteratorTest >> setUp [
+TreeIteratorTest >> setUp [
 	super setUp.
 	tree := #(1 
 					(2 
@@ -48,46 +48,46 @@ TQIteratorTest >> setUp [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testAllButFirst [
+TreeIteratorTest >> testAllButFirst [
 	self assertCollection: (iterator allButFirst: 1) equals: (self iteratorWalk allButFirst: 1)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testAllButFirst2 [
+TreeIteratorTest >> testAllButFirst2 [
 	self assertCollection: (iterator allButFirst: 2) equals: (self iteratorWalk allButFirst: 2)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testAllButFirst3 [
+TreeIteratorTest >> testAllButFirst3 [
 	self assertCollection: (iterator allButFirst: 3) equals: (self iteratorWalk allButFirst: 3).
 ]
 
 { #category : #tests }
-TQIteratorTest >> testAllButFirst4 [
+TreeIteratorTest >> testAllButFirst4 [
 	self should: [ iterator allButFirst: self iteratorWalk size + 1 ] raise: TQIteratorIsAtEnd
 ]
 
 { #category : #tests }
-TQIteratorTest >> testAllButFirst5 [
+TreeIteratorTest >> testAllButFirst5 [
 	self assertCollection: (iterator allButFirst: self iteratorWalk size) equals: (self iteratorWalk allButFirst: self iteratorWalk size).
 ]
 
 { #category : #tests }
-TQIteratorTest >> testAllSatisfy [
+TreeIteratorTest >> testAllSatisfy [
 	self
 		assertCollection: (iterator allSatisfy: #isArray)
 		equals: (self iteratorWalk allSatisfy: #isArray)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testAnySatisfy [
+TreeIteratorTest >> testAnySatisfy [
 	self
 		assertCollection: (iterator anySatisfy: [ :n | n first = 9 ])
 		equals: (self iteratorWalk anySatisfy: [ :n | n first = 9 ])
 ]
 
 { #category : #tests }
-TQIteratorTest >> testAtEnd [
+TreeIteratorTest >> testAtEnd [
 	9 timesRepeat: [ 
 		self deny: iterator atEnd.
 		iterator next ].
@@ -96,42 +96,42 @@ TQIteratorTest >> testAtEnd [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testCollect [
+TreeIteratorTest >> testCollect [
 	self
 		assertCollection: (iterator collect: #first)
 		equals: (self iteratorWalk collect: #first as: Array)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testCollectAs [
+TreeIteratorTest >> testCollectAs [
 	self
 		assertCollection: (iterator collect: #first as: Array)
 		equals: (self iteratorWalk collect: #first as: Array)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testCollectAs2 [
+TreeIteratorTest >> testCollectAs2 [
 	self
 		assertCollection: (iterator collect: [ :node | node allButFirst size ] as: OrderedCollection)
 		equals: (self iteratorWalk collect: [ :node | node allButFirst size ] as: OrderedCollection)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testCount [
+TreeIteratorTest >> testCount [
 	self
 		assertCollection: (iterator sum: [ :n | n first ])
 		equals: (self iteratorWalk sum: [ :n | n first ])
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDetect [
+TreeIteratorTest >> testDetect [
 	self
 		assert: (iterator detect: [ :array | array allButFirst size = 2 ])
 		equals: (self iteratorWalk detect: [ :array | array allButFirst size = 2 ])
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDetect2 [
+TreeIteratorTest >> testDetect2 [
 	self
 		should: [ iterator detect: [ :array | array allButFirst size = 10 ] ] raise: NotFound.
 	self
@@ -139,7 +139,7 @@ TQIteratorTest >> testDetect2 [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDetectIfFound [
+TreeIteratorTest >> testDetectIfFound [
 	iterator detect: [ :array | array allButFirst size = 2 ] ifFound: [ :found |
 		self iteratorWalk detect: [ :array | array allButFirst size = 2 ] ifFound: [ :walkFound |
 			self assert: found equals: walkFound.
@@ -149,21 +149,21 @@ TQIteratorTest >> testDetectIfFound [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDetectIfFoundIfNone [
+TreeIteratorTest >> testDetectIfFoundIfNone [
 	self
 		assert: (iterator detect: [ :array | array allButFirst size = 2 ] ifFound: #yourself ifNone: [ self fail ])
 		equals: (self iteratorWalk detect: [ :array | array allButFirst size = 2 ] ifFound: #yourself ifNone: [ self fail ])
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDetectIfFoundIfNone2 [
+TreeIteratorTest >> testDetectIfFoundIfNone2 [
 	self
 		assert: (iterator detect: [ :array | array allButFirst size = 42 ] ifFound: #yourself ifNone: [ 43 ])
 		equals: (self iteratorWalk detect: [ :array | array allButFirst size = 42 ] ifFound: #yourself ifNone: [ 43 ])
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDetectIfNone [
+TreeIteratorTest >> testDetectIfNone [
 	iterator detect: [ :array | array first = 10 ] ifNone: [
 		self iteratorWalk detect: [ :array | array first = 10 ] ifNone: [ 
 			^ self ] ].
@@ -172,21 +172,21 @@ TQIteratorTest >> testDetectIfNone [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDetectMax [
+TreeIteratorTest >> testDetectMax [
 	self
 		assert: (iterator detectMax: [ :array | array first ])
 		equals: (self iteratorWalk detectMax: [ :array | array first ])
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDetectMin [
+TreeIteratorTest >> testDetectMin [
 	self
 		assert: (iterator detectMin: [ :array | array first ])
 		equals: (self iteratorWalk detectMin: [ :array | array first ])
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDo [
+TreeIteratorTest >> testDo [
 	|i|
 	i := 1.
 	iterator do: [ :array |
@@ -195,7 +195,7 @@ TQIteratorTest >> testDo [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testDoSeparatedBy [
+TreeIteratorTest >> testDoSeparatedBy [
 	|i separationsCount|
 	i := 1.
 	separationsCount := 0.
@@ -207,7 +207,7 @@ TQIteratorTest >> testDoSeparatedBy [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testHasNext [
+TreeIteratorTest >> testHasNext [
 	9 timesRepeat: [ 
 		self assert: iterator hasNext.
 		iterator next ].
@@ -216,7 +216,7 @@ TQIteratorTest >> testHasNext [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testNext [
+TreeIteratorTest >> testNext [
 	self iteratorWalk do: [ :array |
 		self assert: iterator next first equals: array first ].
 	
@@ -224,7 +224,7 @@ TQIteratorTest >> testNext [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testPeek [
+TreeIteratorTest >> testPeek [
 	self iteratorWalk do: [ :array |
 		self assert: iterator peek first equals: array first.
 		iterator next ].
@@ -233,7 +233,7 @@ TQIteratorTest >> testPeek [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testPeekParent [
+TreeIteratorTest >> testPeekParent [
 	self iteratorParentWalk do: [ :array |
 		self assert: (iterator peekParent ifNotNil: #first) equals: (array ifNotNil: #first).
 		iterator next ].
@@ -242,49 +242,49 @@ TQIteratorTest >> testPeekParent [
 ]
 
 { #category : #tests }
-TQIteratorTest >> testReject [
+TreeIteratorTest >> testReject [
 	self
 		assertCollection: (iterator reject: [ :n | n first odd ])
 		equals: ((self iteratorWalk reject: [ :n | n first odd ]) as: Array)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testRejectAs [
+TreeIteratorTest >> testRejectAs [
 	self
 		assertCollection: (iterator reject: [ :n | n first odd ] as: Array)
 		equals: ((self iteratorWalk reject: [ :n | n first odd ]) as: Array)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testSelect [
+TreeIteratorTest >> testSelect [
 	self
 		assertCollection: (iterator select: [ :n | n first odd ])
 		equals: ((self iteratorWalk select: [ :n | n first odd ]) as: Array)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testSelectAs [
+TreeIteratorTest >> testSelectAs [
 	self
 		assertCollection: (iterator select: [ :n | n first odd ] as: Array)
 		equals: ((self iteratorWalk select: [ :n | n first odd ]) as: Array)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testSelectAs2 [
+TreeIteratorTest >> testSelectAs2 [
 	self
 		assertCollection: (iterator select: [ :n | n first even ] as: OrderedCollection)
 		equals: ((self iteratorWalk select: [ :n | n first even ]) as: OrderedCollection)
 ]
 
 { #category : #tests }
-TQIteratorTest >> testSum [
+TreeIteratorTest >> testSum [
 	self
 		assertCollection: (iterator sum: [ :n | n first ])
 		equals: (self iteratorWalk sum: [ :n | n first ])
 ]
 
 { #category : #tests }
-TQIteratorTest >> testUpToEnd [
+TreeIteratorTest >> testUpToEnd [
 	self
 		assertCollection: (iterator upToEnd)
 		equals: (self iteratorWalk collect: #yourself as: Array)

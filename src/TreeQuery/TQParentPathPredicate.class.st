@@ -4,14 +4,6 @@ Class {
 	#category : #'TreeQuery-Query'
 }
 
-{ #category : #'instance creation' }
-TQParentPathPredicate class >> childPredicate: childPredicate parentPredicate: parentPredicate [
-	^ self new
-		childPredicate: childPredicate;
-		parentPredicate: parentPredicate;
-		yourself
-]
-
 { #category : #testing }
 TQParentPathPredicate >> matches: aTQNodeWrapper [
 	| withoutFirst |

@@ -17,6 +17,14 @@ Class {
 }
 
 { #category : #accessing }
+TreeIterator class >> any [
+	"Method to be used when the way the tree is walk does not matter.
+	 When using this method one should not rely on the fact that a breadth first iterator is returned, it might change in the future.
+	 This method allows to explicitely write in your code that *you do not care* about how the tree is walked."
+	^ self breadthFirst
+]
+
+{ #category : #accessing }
 TreeIterator class >> breadthFirst [
 	^ TQBreadthFirstIterator
 ]

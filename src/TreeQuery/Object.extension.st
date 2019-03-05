@@ -1,6 +1,12 @@
 Extension { #name : #Object }
 
 { #category : #'*TreeQuery' }
+Object >> anyIterator: childrenBlock [
+	^ TreeIterator any
+			root: self childrenBlock: childrenBlock
+]
+
+{ #category : #'*TreeQuery' }
 Object >> asTQPredicate [
 	^ TQObjectEqualityPredicate object: self
 ]

@@ -13,8 +13,3 @@ TQPredicate >> extract: aTQNodeWrapper [
 TQPredicate >> matches: aTQNodeWrapper [
 	^ self subclassResponsibility
 ]
-
-{ #category : #composing }
-TQPredicate >> parent: aTQPredicate [
-	^ TQParentPathPredicate childPredicate: self parentPredicate: aTQPredicate
-]

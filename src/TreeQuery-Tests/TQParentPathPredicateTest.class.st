@@ -1,9 +1,9 @@
 "
-A TQParentPredicateTest is a test class for testing the behavior of TQParentPredicate
+A TQParentPathPredicateTest is a test class for testing the behavior of TQParentPathPredicate
 "
 Class {
-	#name : #TQParentPredicateTest,
-	#superclass : #TestCase,
+	#name : #TQParentPathPredicateTest,
+	#superclass : #TQPathPredicateTest,
 	#instVars : [
 		'parentPredicate'
 	],
@@ -11,14 +11,14 @@ Class {
 }
 
 { #category : #running }
-TQParentPredicateTest >> setUp [
+TQParentPathPredicateTest >> setUp [
 	"Hooks that subclasses may override to define the fixture of test."
 	super setUp.
-	parentPredicate := TQParentPredicate predicate: [ :parent | parent first odd ] asTQPredicate
+	parentPredicate := TQParentPathPredicate path: { TQAnyPredicate new . [ :parent | parent first odd ] asTQPredicate }
 ]
 
 { #category : #test }
-TQParentPredicateTest >> testMatches [
+TQParentPathPredicateTest >> testMatches [
 	| node |
 	node := (TQNodeWrapper wrap: #(1 (2) (3)) childrenBlock: #allButFirst) wrappedChildren first.
 					
@@ -26,7 +26,7 @@ TQParentPredicateTest >> testMatches [
 ]
 
 { #category : #test }
-TQParentPredicateTest >> testMatches2 [
+TQParentPathPredicateTest >> testMatches2 [
 	| node |
 	node := (TQNodeWrapper wrap: #(2 (2) (3)) childrenBlock: #allButFirst) wrappedChildren first.
 					
@@ -34,7 +34,7 @@ TQParentPredicateTest >> testMatches2 [
 ]
 
 { #category : #test }
-TQParentPredicateTest >> testMatches3 [
+TQParentPathPredicateTest >> testMatches3 [
 	| node |
 	node := (TQNodeWrapper wrap: #(1 (2) (3)) childrenBlock: #allButFirst).
 					

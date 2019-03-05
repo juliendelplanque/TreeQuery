@@ -28,46 +28,6 @@ TQPathPredicateTest >> testConcatenateWith [
 ]
 
 { #category : #test }
-TQPathPredicateTest >> testMatches [
-	| treeWrapped |
-	treeWrapped := TQNodeWrapper wrap: #(1 #('str')) childrenBlock: #allButFirst.
-	
-	self assert: (pathPredicate matches: treeWrapped).
-]
-
-{ #category : #test }
-TQPathPredicateTest >> testMatches2 [
-	| treeWrapped |
-	treeWrapped := TQNodeWrapper wrap: #(1 #(2)) childrenBlock: #allButFirst.
-	
-	self deny: (pathPredicate matches: treeWrapped).
-]
-
-{ #category : #test }
-TQPathPredicateTest >> testMatches3 [
-	| treeWrapped |
-	treeWrapped := TQNodeWrapper wrap: #(1 #('str' (2))) childrenBlock: #allButFirst.
-	
-	self assert: (pathPredicate matches: treeWrapped).
-]
-
-{ #category : #test }
-TQPathPredicateTest >> testMatches4 [
-	| treeWrapped |
-	treeWrapped := TQNodeWrapper wrap: #(1 (2) ('str') (3)) childrenBlock: #allButFirst.
-	
-	self assert: (pathPredicate matches: treeWrapped).
-]
-
-{ #category : #test }
-TQPathPredicateTest >> testMatches5 [
-	| treeWrapped |
-	treeWrapped := TQNodeWrapper wrap: #(1) childrenBlock: #allButFirst.
-	
-	self deny: (pathPredicate matches: treeWrapped).
-]
-
-{ #category : #test }
 TQPathPredicateTest >> testWithoutFirstPredicate [
 	| secondPredicate withoutFirst |
 	self assert: pathPredicate path size equals: 2.

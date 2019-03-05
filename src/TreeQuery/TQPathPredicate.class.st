@@ -15,34 +15,9 @@ TQPathPredicate class >> path: aCollectionOfTQPredicat [
 ]
 
 { #category : #composing }
-TQPathPredicate >> / aTQPredicate [
-	^ self concatenateWith: aTQPredicate
-]
-
-{ #category : #composing }
 TQPathPredicate >> concatenateWith: aTQAtomicPredicate [
 	^ self
 		path: self path , { aTQAtomicPredicate };
-		yourself
-]
-
-{ #category : #testing }
-TQPathPredicate >> matches: aTQNodeWrapper [
-	| withoutFirst |
-	(self path first matches: aTQNodeWrapper)
-		ifFalse: [ ^ false ].
-	self path size = 1
-		ifTrue: [ ^ true ].
-	withoutFirst := self withoutFirstPredicate.
-	
-	^ aTQNodeWrapper wrappedChildren
-		anySatisfy: [ :wrappedChild | withoutFirst matches: wrappedChild ].
-]
-
-{ #category : #composing }
-TQPathPredicate >> parent: aTQAtomicPredicate [
-	^ self
-		path: { aTQAtomicPredicate } , self path;
 		yourself
 ]
 

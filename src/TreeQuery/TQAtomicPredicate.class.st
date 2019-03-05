@@ -31,11 +31,6 @@ TQAtomicPredicate >> extract: aTQNodeWrapper [
 ]
 
 { #category : #composing }
-TQAtomicPredicate >> parent: aTQAtomicPredicate [
-	^ TQParentPredicate predicate: aTQAtomicPredicate
-]
-
-{ #category : #composing }
 TQAtomicPredicate >> predicatesForChildren: aCollectionOfTQPredicates [
 	^ TQCompositePredicate predicate: self children: aCollectionOfTQPredicates
 ]

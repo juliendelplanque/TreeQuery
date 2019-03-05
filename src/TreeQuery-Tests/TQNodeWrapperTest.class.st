@@ -38,6 +38,20 @@ TQNodeWrapperTest >> testChildrenBlock [
 	self assert: nodeWrapper childrenBlock equals: #allButFirst
 ]
 
+{ #category : #test }
+TQNodeWrapperTest >> testHasParent [
+	nodeWrapper wrappedChildren do: [ :child |
+		self assert: child hasParent ].
+	
+	self deny: nodeWrapper hasParent
+]
+
+{ #category : #test }
+TQNodeWrapperTest >> testParent [
+	nodeWrapper wrappedChildren do: [ :child |
+		self assert: child parent equals: nodeWrapper ]
+]
+
 { #category : #tests }
 TQNodeWrapperTest >> testWrappedChildren [
 	| wrappedChildren |

@@ -10,7 +10,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'tqNode',
-		'tqChildrenBlock'
+		'tqChildrenBlock',
+		'parent'
 	],
 	#category : #'TreeQuery-Query'
 }
@@ -33,10 +34,26 @@ TQNodeWrapper >> childrenBlock: anObject [
 	tqChildrenBlock := anObject
 ]
 
+{ #category : #testing }
+TQNodeWrapper >> hasParent [
+	^ self parent isNotNil
+]
+
+{ #category : #accessing }
+TQNodeWrapper >> parent [
+	^ parent
+]
+
+{ #category : #accessing }
+TQNodeWrapper >> parent: anObject [
+	parent := anObject
+]
+
 { #category : #accessing }
 TQNodeWrapper >> wrappedChildren [
 	^ (self childrenBlock value: self wrappedNode) collect: [ :node |
 			self class new
+				parent: self;
 				wrappedNode: node;
 				childrenBlock: self childrenBlock;
 				yourself ]

@@ -4,7 +4,7 @@ A TQAnyPredicateTest is a test class for testing the behavior of TQAnyPredicate
 Class {
 	#name : #TQAnyPredicateTest,
 	#superclass : #TestCase,
-	#category : #'TreeQuery-Tests-Query'
+	#category : #'TreeQuery-Tests-Predicates'
 }
 
 { #category : #tests }

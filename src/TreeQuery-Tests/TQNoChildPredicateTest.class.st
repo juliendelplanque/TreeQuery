@@ -4,7 +4,7 @@ A TQNoChildPredicateTest is a test class for testing the behavior of TQNoChildPr
 Class {
 	#name : #TQNoChildPredicateTest,
 	#superclass : #TestCase,
-	#category : #'TreeQuery-Tests-Query'
+	#category : #'TreeQuery-Tests-Predicates'
 }
 
 { #category : #test }

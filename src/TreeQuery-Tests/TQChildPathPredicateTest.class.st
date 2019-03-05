@@ -4,7 +4,7 @@ A TQChildPathPredicateTest is a test class for testing the behavior of TQChildPa
 Class {
 	#name : #TQChildPathPredicateTest,
 	#superclass : #TQPathPredicateTest,
-	#category : #'TreeQuery-Tests-Query'
+	#category : #'TreeQuery-Tests-Predicates'
 }
 
 { #category : #running }

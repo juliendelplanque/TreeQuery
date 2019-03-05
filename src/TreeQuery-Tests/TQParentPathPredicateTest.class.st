@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'parentPredicate'
 	],
-	#category : #'TreeQuery-Tests-Query'
+	#category : #'TreeQuery-Tests-Predicates'
 }
 
 { #category : #running }

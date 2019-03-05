@@ -4,7 +4,7 @@ A TQStrictCompositePredicateTest is a test class for testing the behavior of TQS
 Class {
 	#name : #TQStrictCompositePredicateTest,
 	#superclass : #TQCompositePredicateTest,
-	#category : #'TreeQuery-Tests-Query'
+	#category : #'TreeQuery-Tests-Predicates'
 }
 
 { #category : #running }

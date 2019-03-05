@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'compositePredicate'
 	],
-	#category : #'TreeQuery-Tests-Query'
+	#category : #'TreeQuery-Tests-Predicates'
 }
 
 { #category : #running }

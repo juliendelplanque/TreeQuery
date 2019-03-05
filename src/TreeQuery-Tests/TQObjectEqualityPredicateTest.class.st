@@ -4,7 +4,7 @@ A TQObjectEqualityPredicateTest is a test class for testing the behavior of TQOb
 Class {
 	#name : #TQObjectEqualityPredicateTest,
 	#superclass : #TestCase,
-	#category : #'TreeQuery-Tests-Query'
+	#category : #'TreeQuery-Tests-Predicates'
 }
 
 { #category : #test }

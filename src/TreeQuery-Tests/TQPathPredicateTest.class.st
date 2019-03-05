@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'pathPredicate'
 	],
-	#category : #'TreeQuery-Tests-Query'
+	#category : #'TreeQuery-Tests-Predicates'
 }
 
 { #category : #running }

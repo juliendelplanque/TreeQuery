@@ -25,7 +25,7 @@ TreeQuery class >> depthFirst [
 
 { #category : #configuring }
 TreeQuery >> breadthFirst [
-	self iteratorClass: TQBreadthFirstIterator
+	self iteratorClass: TreeIterator breadthFirst
 ]
 
 { #category : #configuring }
@@ -40,12 +40,12 @@ TreeQuery >> collectMatches [
 
 { #category : #configuring }
 TreeQuery >> depthFirst [
-	self iteratorClass: TQDepthFirstIterator
+	self iteratorClass: TreeIterator depthFirst
 ]
 
 { #category : #accessing }
 TreeQuery >> iteratorClass [
-	^ iteratorClass
+	^ iteratorClass ifNil: [ iteratorClass := TreeIterator any ]
 ]
 
 { #category : #accessing }

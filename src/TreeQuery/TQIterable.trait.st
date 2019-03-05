@@ -62,7 +62,7 @@ TQIterable >> breadthFirstDo: aBlock separatedBy: separatorBlock [
 
 { #category : #accessor }
 TQIterable >> breadthFirstIterator [
-	^ TQBreadthFirstIterator root: self childrenBlock: self childrenSelector
+	^ TreeIterator breadthFirst root: self childrenBlock: self childrenSelector
 ]
 
 { #category : #'enumerating - breadth first' }
@@ -144,7 +144,7 @@ TQIterable >> depthFirstDo: aBlock separatedBy: separatorBlock [
 
 { #category : #accessor }
 TQIterable >> depthFirstIterator [
-	^ TQDepthFirstIterator root: self childrenBlock: self childrenSelector
+	^ TreeIterator depthFirst root: self childrenBlock: self childrenSelector
 ]
 
 { #category : #'enumerating - depth first' }

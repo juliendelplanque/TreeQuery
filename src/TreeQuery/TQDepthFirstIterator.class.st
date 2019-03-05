@@ -3,7 +3,7 @@ I am an iterator used to walk a tree depth-first.
 "
 Class {
 	#name : #TQDepthFirstIterator,
-	#superclass : #TQIterator,
+	#superclass : #TreeIterator,
 	#instVars : [
 		'visitStack'
 	],

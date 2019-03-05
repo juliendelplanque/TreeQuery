@@ -3,7 +3,7 @@ I implement the decorator design pattern for iterators.
 "
 Class {
 	#name : #TQIteratorDecorator,
-	#superclass : #TQIterator,
+	#superclass : #TreeIterator,
 	#instVars : [
 		'decoratedIterator'
 	],

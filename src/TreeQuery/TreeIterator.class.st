@@ -16,6 +16,16 @@ Class {
 	#category : #'TreeQuery-Core'
 }
 
+{ #category : #accessing }
+TreeIterator class >> breadthFirst [
+	^ TQBreadthFirstIterator
+]
+
+{ #category : #accessing }
+TreeIterator class >> depthFirst [
+	^ TQDepthFirstIterator
+]
+
 { #category : #'instance creation' }
 TreeIterator class >> root: anObject [
 	^ self root: anObject childrenBlock: #children

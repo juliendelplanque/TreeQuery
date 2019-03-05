@@ -32,7 +32,7 @@ TQAtomicPredicate >> extract: aTQNodeWrapper [
 
 { #category : #composing }
 TQAtomicPredicate >> parent: aTQAtomicPredicate [
-	^ aTQAtomicPredicate / self
+	^ TQParentPredicate predicate: aTQAtomicPredicate
 ]
 
 { #category : #composing }

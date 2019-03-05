@@ -204,6 +204,31 @@ TQIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 
 { #category : #accessing }
 TQIterator >> next [
+	^ self nextWrapped wrappedNode
+]
+
+{ #category : #'accessing - wrapped' }
+TQIterator >> nextWrapped [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+TQIterator >> peek [
+	^ self peekWrapped wrappedNode
+]
+
+{ #category : #accessing }
+TQIterator >> peekParent [
+	^ self peekWrappedParent ifNotNil: #wrappedNode
+]
+
+{ #category : #'accessing - wrapped' }
+TQIterator >> peekWrapped [
+	^ self subclassResponsibility
+]
+
+{ #category : #'accessing - wrapped' }
+TQIterator >> peekWrappedParent [
 	^ self subclassResponsibility
 ]
 

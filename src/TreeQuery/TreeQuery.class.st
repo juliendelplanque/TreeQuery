@@ -76,7 +76,7 @@ TreeQuery >> predicate: anObject [
 { #category : #running }
 TreeQuery >> runOn: anObject childrenBlock: aBlock [
 	| iterator |
-	iterator := TQNodeWrapperIterator decorate: (self iteratorClass root: anObject childrenBlock: aBlock).
+	iterator := TQNodeWrapperIterator decoratedIterator: (self iteratorClass root: anObject childrenBlock: aBlock).
 	^ self searchStrategyClass new
 		predicate: self predicate;
 		search: iterator

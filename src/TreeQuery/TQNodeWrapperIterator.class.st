@@ -1,3 +1,6 @@
+"
+I override #next, #peek and #peekParent in order to allow to manipulate wrapped nodes instead of directly the nodes of the tree manipulated.
+"
 Class {
 	#name : #TQNodeWrapperIterator,
 	#superclass : #TQIteratorDecorator,
@@ -6,7 +9,15 @@ Class {
 
 { #category : #accessing }
 TQNodeWrapperIterator >> next [
-	^ TQNodeWrapper new
-		wrappedNode: self decoratedIterator next;
-		childrenBlock: self childrenBlock
+	^ self nextWrapped
+]
+
+{ #category : #accessing }
+TQNodeWrapperIterator >> peek [
+	^ self peekWrapped
+]
+
+{ #category : #accessing }
+TQNodeWrapperIterator >> peekParent [
+	^ self peekWrappedParent
 ]

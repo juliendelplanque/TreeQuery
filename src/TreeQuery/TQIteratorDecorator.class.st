@@ -1,3 +1,6 @@
+"
+I implement the decorator design pattern for iterators.
+"
 Class {
 	#name : #TQIteratorDecorator,
 	#superclass : #TQIterator,
@@ -8,15 +11,10 @@ Class {
 }
 
 { #category : #'instance creation' }
-TQIteratorDecorator class >> decorate: aTQIterator [
+TQIteratorDecorator class >> decoratedIterator: aTQIterator [
 	^ self new
 		decoratedIterator: aTQIterator;
 		yourself
-]
-
-{ #category : #accessing }
-TQIteratorDecorator >> childrenBlock [
-	^ self decoratedIterator childrenBlock
 ]
 
 { #category : #accessing }
@@ -34,7 +32,17 @@ TQIteratorDecorator >> hasNext [
 	^ self decoratedIterator hasNext
 ]
 
-{ #category : #accessing }
-TQIteratorDecorator >> next [
-	^ self decoratedIterator next
+{ #category : #'accessing - wrapped' }
+TQIteratorDecorator >> nextWrapped [
+	^ self decoratedIterator nextWrapped
+]
+
+{ #category : #'accessing - wrapped' }
+TQIteratorDecorator >> peekWrapped [
+	^ self decoratedIterator peekWrapped
+]
+
+{ #category : #'accessing - wrapped' }
+TQIteratorDecorator >> peekWrappedParent [
+	^ self decoratedIterator peekWrappedParent
 ]

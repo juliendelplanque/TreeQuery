@@ -17,6 +17,12 @@ TQIteratorTest class >> isAbstract [
 ]
 
 { #category : #accessing }
+TQIteratorTest >> iteratorParentWalk [
+	"Returns the parents of nodes one-by-one as encountered by the iterator during the walk."
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 TQIteratorTest >> iteratorWalk [
 	"Returns the nodes one-by-one as encountered by the iterator during the walk."
 	^ self subclassResponsibility
@@ -41,27 +47,27 @@ TQIteratorTest >> setUp [
 				)
 ]
 
-{ #category : #test }
+{ #category : #tests }
 TQIteratorTest >> testAllButFirst [
 	self assertCollection: (iterator allButFirst: 1) equals: (self iteratorWalk allButFirst: 1)
 ]
 
-{ #category : #test }
+{ #category : #tests }
 TQIteratorTest >> testAllButFirst2 [
 	self assertCollection: (iterator allButFirst: 2) equals: (self iteratorWalk allButFirst: 2)
 ]
 
-{ #category : #test }
+{ #category : #tests }
 TQIteratorTest >> testAllButFirst3 [
 	self assertCollection: (iterator allButFirst: 3) equals: (self iteratorWalk allButFirst: 3).
 ]
 
-{ #category : #test }
+{ #category : #tests }
 TQIteratorTest >> testAllButFirst4 [
 	self should: [ iterator allButFirst: self iteratorWalk size + 1 ] raise: TQIteratorIsAtEnd
 ]
 
-{ #category : #test }
+{ #category : #tests }
 TQIteratorTest >> testAllButFirst5 [
 	self assertCollection: (iterator allButFirst: self iteratorWalk size) equals: (self iteratorWalk allButFirst: self iteratorWalk size).
 ]
@@ -188,7 +194,7 @@ TQIteratorTest >> testDo [
 		i := i + 1 ].
 ]
 
-{ #category : #test }
+{ #category : #tests }
 TQIteratorTest >> testDoSeparatedBy [
 	|i separationsCount|
 	i := 1.
@@ -215,6 +221,24 @@ TQIteratorTest >> testNext [
 		self assert: iterator next first equals: array first ].
 	
 	self should: [ iterator next ] raise: TQIteratorIsAtEnd
+]
+
+{ #category : #tests }
+TQIteratorTest >> testPeek [
+	self iteratorWalk do: [ :array |
+		self assert: iterator peek first equals: array first.
+		iterator next ].
+	
+	self should: [ iterator peek ] raise: TQIteratorIsAtEnd
+]
+
+{ #category : #tests }
+TQIteratorTest >> testPeekParent [
+	self iteratorParentWalk do: [ :array |
+		self assert: (iterator peekParent ifNotNil: #first) equals: (array ifNotNil: #first).
+		iterator next ].
+	
+	self should: [ iterator peekParent ] raise: TQIteratorIsAtEnd
 ]
 
 { #category : #tests }

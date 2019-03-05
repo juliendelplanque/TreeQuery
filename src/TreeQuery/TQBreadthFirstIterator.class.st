@@ -45,17 +45,31 @@ TQBreadthFirstIterator >> hasNext [
 TQBreadthFirstIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 	super initializeForRoot: anObject childrenBlock: aBlock.
 	visitQueue := LinkedList new
-						addFirst: anObject;
+						addFirst: (TQNodeWrapper wrap: anObject parent: nil);
 						yourself
 ]
 
-{ #category : #accessing }
-TQBreadthFirstIterator >> next [
-	| next |
+{ #category : #'accessing - wrapped' }
+TQBreadthFirstIterator >> nextWrapped [
+	| nextWrapped |
 	self hasNext
 		ifFalse: [ TQIteratorIsAtEnd signalIterator: self ].
-	next := visitQueue removeLast.
-	(childrenBlock value: next) do: [ :child |
-		visitQueue addFirst: child ].
-	^ next
+	nextWrapped := visitQueue removeLast.
+	(childrenBlock value: nextWrapped wrappedNode) do: [ :child |
+		visitQueue addFirst: (TQNodeWrapper wrap: child parent: nextWrapped) ].
+	^ nextWrapped
+]
+
+{ #category : #'accessing - wrapped' }
+TQBreadthFirstIterator >> peekWrapped [
+	self hasNext
+		ifFalse: [ TQIteratorIsAtEnd signalIterator: self ].
+	^ visitQueue last
+]
+
+{ #category : #'accessing - wrapped' }
+TQBreadthFirstIterator >> peekWrappedParent [
+	self hasNext
+		ifFalse: [ TQIteratorIsAtEnd signalIterator: self ].
+	^ visitQueue last parent
 ]

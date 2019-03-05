@@ -4,6 +4,11 @@ Class {
 	#category : #'TreeQuery-Query'
 }
 
+{ #category : #composing }
+TQParentPathPredicate >> \ aTQPredicate [
+	^ self parentPredicate: aTQPredicate
+]
+
 { #category : #testing }
 TQParentPathPredicate >> matches: aTQNodeWrapper [
 	| withoutFirst |
@@ -15,4 +20,9 @@ TQParentPathPredicate >> matches: aTQNodeWrapper [
 		ifFalse: [ ^ false ].
 	withoutFirst := self withoutFirstPredicate.
 	^ withoutFirst matches: aTQNodeWrapper parent
+]
+
+{ #category : #composing }
+TQParentPathPredicate >> parentPredicate: aTQPredicate [
+	^ self concatenateWith: aTQPredicate
 ]

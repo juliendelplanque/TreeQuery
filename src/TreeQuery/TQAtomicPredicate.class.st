@@ -15,6 +15,11 @@ TQAtomicPredicate >> > aCollectionOfTQPredicates [
 ]
 
 { #category : #composing }
+TQAtomicPredicate >> \ aTQPredicate [
+	^ self parentPredicate: aTQPredicate
+]
+
+{ #category : #composing }
 TQAtomicPredicate >> children: aCollectionOfTQPredicates [
 	self
 		deprecated: 'Use #predicatesForChildren: instead.'
@@ -28,6 +33,11 @@ TQAtomicPredicate >> extract: aTQNodeWrapper [
 	^ TQNode new
 			data: aTQNodeWrapper wrappedNode;
 			yourself
+]
+
+{ #category : #composing }
+TQAtomicPredicate >> parentPredicate: aTQPredicate [
+	^ TQParentPathPredicate path: { self . aTQPredicate }
 ]
 
 { #category : #composing }

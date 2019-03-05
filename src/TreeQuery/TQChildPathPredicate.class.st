@@ -21,3 +21,8 @@ TQChildPathPredicate >> matches: aTQNodeWrapper [
 	^ aTQNodeWrapper wrappedChildren
 		anySatisfy: [ :wrappedChild | withoutFirst matches: wrappedChild ].
 ]
+
+{ #category : #printing }
+TQChildPathPredicate >> pathSeparatorForPrinting [
+	^ $/
+]

@@ -26,3 +26,8 @@ TQParentPathPredicate >> matches: aTQNodeWrapper [
 TQParentPathPredicate >> parentPredicate: aTQPredicate [
 	^ self concatenateWith: aTQPredicate
 ]
+
+{ #category : #printing }
+TQParentPathPredicate >> pathSeparatorForPrinting [
+	^ $\
+]

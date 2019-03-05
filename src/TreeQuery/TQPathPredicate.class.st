@@ -31,13 +31,18 @@ TQPathPredicate >> path: anObject [
 	path := anObject
 ]
 
-{ #category : #composing }
+{ #category : #printing }
+TQPathPredicate >> pathSeparatorForPrinting [
+	^ self subclassResponsibility
+]
+
+{ #category : #printing }
 TQPathPredicate >> printOn: aStream [
 	super printOn: aStream.
 	aStream nextPut: $(.
 	self path
 		do: [ :predicate | predicate printOn: aStream ]
-		separatedBy: [ aStream nextPut: $/ ].
+		separatedBy: [ aStream nextPut: self pathSeparatorForPrinting ].
 	aStream nextPut: $)
 ]
 

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'path'
 	],
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Predicates'
 }
 
 { #category : #'instance creation' }

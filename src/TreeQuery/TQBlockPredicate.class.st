@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'predicateBlock'
 	],
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Predicates'
 }
 
 { #category : #'instance creation' }

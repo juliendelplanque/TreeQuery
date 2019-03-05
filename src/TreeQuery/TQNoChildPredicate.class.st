@@ -4,7 +4,7 @@ Matches if I met a node without children.
 Class {
 	#name : #TQNoChildPredicate,
 	#superclass : #TQAtomicPredicate,
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Predicates'
 }
 
 { #category : #testing }

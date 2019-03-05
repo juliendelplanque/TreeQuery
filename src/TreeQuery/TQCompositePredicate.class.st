@@ -5,27 +5,15 @@ Class {
 		'predicate',
 		'predicatesForChildren'
 	],
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Predicates'
 }
 
 { #category : #'instance creation' }
 TQCompositePredicate class >> predicate: aTQPredicate children: aCollectionOfTQPredicates [
 	^ self new
 		predicate: aTQPredicate;
-		children: aCollectionOfTQPredicates;
+		predicatesForChildren: aCollectionOfTQPredicates;
 		yourself
-]
-
-{ #category : #accessing }
-TQCompositePredicate >> children [
-	self deprecated: 'Use #predicatesForChildren instead.'.
-	^ self predicatesForChildren
-]
-
-{ #category : #accessing }
-TQCompositePredicate >> children: anObject [
-	self deprecated: 'Use #predicatesForChildren: instead.'.
-	self predicatesForChildren: anObject
 ]
 
 { #category : #testing }

@@ -1,7 +1,7 @@
 Class {
 	#name : #TQPredicate,
 	#superclass : #Object,
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Predicates'
 }
 
 { #category : #extracting }

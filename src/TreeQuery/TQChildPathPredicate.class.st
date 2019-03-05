@@ -1,7 +1,7 @@
 Class {
 	#name : #TQChildPathPredicate,
 	#superclass : #TQPathPredicate,
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Predicates'
 }
 
 { #category : #composing }

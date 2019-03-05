@@ -1,7 +1,7 @@
 Class {
 	#name : #TQStrictCompositePredicate,
 	#superclass : #TQCompositePredicate,
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Predicates'
 }
 
 { #category : #testing }

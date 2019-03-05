@@ -1,7 +1,7 @@
 Class {
 	#name : #TQAtomicPredicate,
 	#superclass : #TQPredicate,
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Predicates'
 }
 
 { #category : #composing }
@@ -19,15 +19,6 @@ TQAtomicPredicate >> \ aTQPredicate [
 	^ self parentPredicate: aTQPredicate
 ]
 
-{ #category : #composing }
-TQAtomicPredicate >> children: aCollectionOfTQPredicates [
-	self
-		deprecated: 'Use #predicatesForChildren: instead.'
-		transformWith: '`@receiver children: `@statements1' 
-						-> '`@receiver predicatesForChildren: `@statements1'.
-	^ self predicatesForChildren: aCollectionOfTQPredicates
-]
-
 { #category : #extracting }
 TQAtomicPredicate >> extract: aTQNodeWrapper [
 	^ TQNode new
@@ -43,15 +34,6 @@ TQAtomicPredicate >> parentPredicate: aTQPredicate [
 { #category : #composing }
 TQAtomicPredicate >> predicatesForChildren: aCollectionOfTQPredicates [
 	^ TQCompositePredicate predicate: self children: aCollectionOfTQPredicates
-]
-
-{ #category : #composing }
-TQAtomicPredicate >> strictChildren: aCollectionOfTQPredicates [
-	self
-		deprecated: 'Use #strictPredicatesForChildren: instead.'
-		transformWith: '`@receiver strictChildren: `@statements1' 
-						-> '`@receiver strictPredicatesForChildren: `@statements1'.
-	^ self strictPredicatesForChildren: aCollectionOfTQPredicates
 ]
 
 { #category : #composing }

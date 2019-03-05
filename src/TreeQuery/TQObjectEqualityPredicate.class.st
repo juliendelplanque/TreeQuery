@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'object'
 	],
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Predicates'
 }
 
 { #category : #'instance creation' }

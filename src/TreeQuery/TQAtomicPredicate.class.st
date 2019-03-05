@@ -1,3 +1,6 @@
+"
+A predicate is said to be atomic if it does not rely on the result of an other predicate to decide whether a node provided to #matches: methods matches or not.
+"
 Class {
 	#name : #TQAtomicPredicate,
 	#superclass : #TQPredicate,

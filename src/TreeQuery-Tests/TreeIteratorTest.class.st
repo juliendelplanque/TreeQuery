@@ -208,7 +208,7 @@ TreeIteratorTest >> testDoSeparatedBy [
 
 { #category : #tests }
 TreeIteratorTest >> testHasNext [
-	9 timesRepeat: [ 
+	self iteratorWalk size timesRepeat: [ 
 		self assert: iterator hasNext.
 		iterator next ].
 	

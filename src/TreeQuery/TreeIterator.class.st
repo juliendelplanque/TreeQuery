@@ -4,7 +4,7 @@ I am an abstract iterator used to walk a tree.
 My instances need to be initialized calling #initializeForRoot:childrenBlock: providing me the root of the AST and a block allowing myself to reach children of each node.
 
 
-However you should use my class-side method to creat new instances of myself.
+However you should use my class-side method to create new instances of myself.
 "
 Class {
 	#name : #TreeIterator,

@@ -18,6 +18,11 @@ TQAtomicPredicate >> > aCollectionOfTQPredicates [
 ]
 
 { #category : #composing }
+TQAtomicPredicate >> >> aCollectionOfTQPredicates [
+	^ self strictPredicatesForChildren: aCollectionOfTQPredicates
+]
+
+{ #category : #composing }
 TQAtomicPredicate >> \ aTQPredicate [
 	^ self parentPredicate: aTQPredicate
 ]

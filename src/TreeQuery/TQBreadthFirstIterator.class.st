@@ -19,7 +19,7 @@ TQBreadthFirstIterator >> hasNext [
 TQBreadthFirstIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 	super initializeForRoot: anObject childrenBlock: aBlock.
 	visitQueue := LinkedList new
-						addFirst: (TQNodeWrapper wrap: anObject parent: nil);
+						addFirst: (TQNodeWrapper wrap: anObject childrenBlock: aBlock parent: nil);
 						yourself
 ]
 
@@ -30,7 +30,7 @@ TQBreadthFirstIterator >> nextWrapped [
 		ifFalse: [ TQIteratorIsAtEnd signalIterator: self ].
 	nextWrapped := visitQueue removeLast.
 	(childrenBlock value: nextWrapped wrappedNode) do: [ :child |
-		visitQueue addFirst: (TQNodeWrapper wrap: child parent: nextWrapped) ].
+		visitQueue addFirst: (TQNodeWrapper wrap: child childrenBlock: childrenBlock parent: nextWrapped) ].
 	^ nextWrapped
 ]
 

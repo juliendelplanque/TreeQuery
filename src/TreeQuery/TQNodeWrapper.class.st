@@ -25,6 +25,15 @@ TQNodeWrapper class >> wrap: anObject childrenBlock: aBlock [
 ]
 
 { #category : #'instance creation' }
+TQNodeWrapper class >> wrap: anObject childrenBlock: aBlock parent: aTQNodeWrapper [
+	^ self new
+		wrappedNode: anObject;
+		childrenBlock: aBlock;
+		parent: aTQNodeWrapper;
+		yourself
+]
+
+{ #category : #'instance creation' }
 TQNodeWrapper class >> wrap: anObject parent: aTQNodeWrapper [
 	^ self new
 		wrappedNode: anObject;

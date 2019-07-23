@@ -13,5 +13,7 @@ BaselineOfTreeQuery >> baseline: spec [
 			"Packages"
 			spec
 				package: 'TreeQuery';
-				package: 'TreeQuery-Tests' with: [ spec requires: #('TreeQuery') ] ]
+				package: 'TreeQuery-Tests' with: [ spec requires: #('TreeQuery') ].
+			spec
+				group: 'core' with: #('TreeQuery') ]
 ]

@@ -3,7 +3,7 @@ I am an iterator used to walk a tree breadth-first.
 "
 Class {
 	#name : #TQBreadthFirstIterator,
-	#superclass : #TreeIterator,
+	#superclass : #TQTreeIterator,
 	#instVars : [
 		'visitQueue'
 	],

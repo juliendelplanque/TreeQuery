@@ -7,7 +7,7 @@ My instances need to be initialized calling #initializeForRoot:childrenBlock: pr
 However you should use my class-side method to create new instances of myself.
 "
 Class {
-	#name : #TreeIterator,
+	#name : #TQTreeIterator,
 	#superclass : #Object,
 	#instVars : [
 		'childrenBlock',
@@ -17,7 +17,7 @@ Class {
 }
 
 { #category : #accessing }
-TreeIterator class >> any [
+TQTreeIterator class >> any [
 	"Method to be used when the way the tree is walk does not matter.
 	 When using this method one should not rely on the fact that a breadth first iterator is returned, it might change in the future.
 	 This method allows to explicitely write in your code that *you do not care* about how the tree is walked."
@@ -25,17 +25,17 @@ TreeIterator class >> any [
 ]
 
 { #category : #accessing }
-TreeIterator class >> breadthFirst [
+TQTreeIterator class >> breadthFirst [
 	^ TQBreadthFirstIterator
 ]
 
 { #category : #accessing }
-TreeIterator class >> depthFirst [
+TQTreeIterator class >> depthFirst [
 	^ TQDepthFirstIterator
 ]
 
 { #category : #example }
-TreeIterator class >> exampleBreadthFirst [
+TQTreeIterator class >> exampleBreadthFirst [
 	"In this example, a tree represented by lists of lists is iterated.
 	 For each node (which is an array), the data is stored in first position and
 	 its children are stored in positions 2 to: its size.
@@ -43,7 +43,7 @@ TreeIterator class >> exampleBreadthFirst [
 	 leads to the array in the following example:
 		(TreeIterator exampleBreadthFirst collect: #first) >>> #(1 2 6 3 4 7 5 8 9)
 	"
-	^ TreeIterator breadthFirst 
+	^ TQTreeIterator breadthFirst 
 		root: #(1 
 					(2 
 						(3)
@@ -61,7 +61,7 @@ TreeIterator class >> exampleBreadthFirst [
 ]
 
 { #category : #example }
-TreeIterator class >> exampleDepthFirst [
+TQTreeIterator class >> exampleDepthFirst [
 	"In this example, a tree represented by lists of lists is iterated.
 	 For each node (which is an array), the data is stored in first position and
 	 its children are stored in positions 2 to: its size.
@@ -69,7 +69,7 @@ TreeIterator class >> exampleDepthFirst [
 	 leads to the array in the following example:
 		(TreeIterator exampleDepthFirst collect: #first) >>> #(1 2 3 4 5 6 7 8 9)
 	"
-	^ TreeIterator depthFirst 
+	^ TQTreeIterator depthFirst 
 		root: #(1 
 					(2 
 						(3)
@@ -87,19 +87,19 @@ TreeIterator class >> exampleDepthFirst [
 ]
 
 { #category : #'instance creation' }
-TreeIterator class >> root: anObject [
+TQTreeIterator class >> root: anObject [
 	^ self root: anObject childrenBlock: #children
 ]
 
 { #category : #'instance creation' }
-TreeIterator class >> root: anObject childrenBlock: aBlock [
+TQTreeIterator class >> root: anObject childrenBlock: aBlock [
 	^ self new
 		initializeForRoot: anObject childrenBlock: aBlock;
 		yourself
 ]
 
 { #category : #accessing }
-TreeIterator >> allButFirst [
+TQTreeIterator >> allButFirst [
 	"Answer an array containing all but the first element.
 	 Raise an error if there are not enough elements."
 
@@ -107,7 +107,7 @@ TreeIterator >> allButFirst [
 ]
 
 { #category : #accessing }
-TreeIterator >> allButFirst: n [
+TQTreeIterator >> allButFirst: n [
 	"Answer an array  containing all but the first n elements.
 	 Raise an error if there are not enough elements."
 	n timesRepeat: [ self next ].
@@ -115,7 +115,7 @@ TreeIterator >> allButFirst: n [
 ]
 
 { #category : #enumerating }
-TreeIterator >> allSatisfy: aBlock [
+TQTreeIterator >> allSatisfy: aBlock [
 	"Evaluate aBlock with the nodes of the receiver.
 	If aBlock returns false for any element return false.
 	Otherwise return true."
@@ -125,7 +125,7 @@ TreeIterator >> allSatisfy: aBlock [
 ]
 
 { #category : #enumerating }
-TreeIterator >> anySatisfy: aBlock [
+TQTreeIterator >> anySatisfy: aBlock [
 	"Evaluate aBlock with the nodes of the receiver.
 	If aBlock returns true for any element return true.
 	Otherwise return false."
@@ -135,22 +135,22 @@ TreeIterator >> anySatisfy: aBlock [
 ]
 
 { #category : #testing }
-TreeIterator >> atEnd [
+TQTreeIterator >> atEnd [
 	^ self hasNext not
 ]
 
 { #category : #accessing }
-TreeIterator >> childrenBlock [
+TQTreeIterator >> childrenBlock [
 	^ childrenBlock
 ]
 
 { #category : #enumerating }
-TreeIterator >> collect: aBlock [
+TQTreeIterator >> collect: aBlock [
 	^ self collect: aBlock as: Array
 ]
 
 { #category : #enumerating }
-TreeIterator >> collect: aBlock as: aSequenceableCollection [
+TQTreeIterator >> collect: aBlock as: aSequenceableCollection [
 	"Evaluate aBlock with each of the receiver's elements as the argument.  
 	Collect the resulting values into an instance of aSequenceableCollection.
 	Answer the new collection."
@@ -160,7 +160,7 @@ TreeIterator >> collect: aBlock as: aSequenceableCollection [
 ]
 
 { #category : #enumerating }
-TreeIterator >> count: aBlock [ 
+TQTreeIterator >> count: aBlock [ 
 	"Evaluate aBlock with each of the receiver's nodes as the argument.  
 	Answer the number of nodes that answered true."
 
@@ -171,17 +171,17 @@ TreeIterator >> count: aBlock [
 ]
 
 { #category : #enumerating }
-TreeIterator >> detect: aBlock [
+TQTreeIterator >> detect: aBlock [
 	^ self detect: aBlock ifNone: [ NotFound signalFor: aBlock ]
 ]
 
 { #category : #enumerating }
-TreeIterator >> detect: aBlock ifFound: ifFoundBlock [
+TQTreeIterator >> detect: aBlock ifFound: ifFoundBlock [
 	self detect: aBlock ifFound: ifFoundBlock ifNone: [ "Do nothing on purpose" ]
 ]
 
 { #category : #enumerating }
-TreeIterator >> detect: aBlock ifFound: ifFoundBlock ifNone: ifNoneBlock [
+TQTreeIterator >> detect: aBlock ifFound: ifFoundBlock ifNone: ifNoneBlock [
 	"Search for the first node for which aBlock returns true.
 	 If found, evaluate ifFoundBlock with the found node as arg.
 	 If not found, evaluate ifNoneBlock without arg."
@@ -193,12 +193,12 @@ TreeIterator >> detect: aBlock ifFound: ifFoundBlock ifNone: ifNoneBlock [
 ]
 
 { #category : #enumerating }
-TreeIterator >> detect: aBlock ifNone: ifNoneBlock [
+TQTreeIterator >> detect: aBlock ifNone: ifNoneBlock [
 	^ self detect: aBlock ifFound: [ :found | found ] ifNone: ifNoneBlock
 ]
 
 { #category : #enumerating }
-TreeIterator >> detectMax: aBlock [
+TQTreeIterator >> detectMax: aBlock [
 	"Evaluate aBlock with node of the receiver's nodes as the argument. 
 	Answer the element for which aBlock evaluates to the highest magnitude.
 	If collection empty, return nil."
@@ -219,7 +219,7 @@ TreeIterator >> detectMax: aBlock [
 ]
 
 { #category : #enumerating }
-TreeIterator >> detectMin: aBlock [
+TQTreeIterator >> detectMin: aBlock [
 	"Evaluate aBlock with each of the receiver's nodes as the argument. 
 	Answer the element for which aBlock evaluates to the lowest number.
 	If collection empty, return nil."
@@ -240,14 +240,14 @@ TreeIterator >> detectMin: aBlock [
 ]
 
 { #category : #enumerating }
-TreeIterator >> do: aBlock [
+TQTreeIterator >> do: aBlock [
 	"Executes aBlock on all the objects returned by #next until #hasNextReturn false."
 	[ self hasNext ] whileTrue: [ 
 		aBlock value: self next ]
 ]
 
 { #category : #enumerating }
-TreeIterator >> do: doBlock separatedBy: separatorBlock [
+TQTreeIterator >> do: doBlock separatedBy: separatorBlock [
 	"Evaluate the doBlock for all nodes in the receiver,
 	and evaluate the separatorBlock between."
 
@@ -262,53 +262,53 @@ TreeIterator >> do: doBlock separatedBy: separatorBlock [
 ]
 
 { #category : #testing }
-TreeIterator >> hasNext [
+TQTreeIterator >> hasNext [
 	^ self subclassResponsibility
 ]
 
 { #category : #initialization }
-TreeIterator >> initializeForRoot: anObject childrenBlock: aBlock [
+TQTreeIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 	root := anObject.
 	childrenBlock := aBlock
 ]
 
 { #category : #accessing }
-TreeIterator >> next [
+TQTreeIterator >> next [
 	^ self nextWrapped wrappedNode
 ]
 
 { #category : #'accessing - wrapped' }
-TreeIterator >> nextWrapped [
+TQTreeIterator >> nextWrapped [
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-TreeIterator >> peek [
+TQTreeIterator >> peek [
 	^ self peekWrapped wrappedNode
 ]
 
 { #category : #accessing }
-TreeIterator >> peekParent [
+TQTreeIterator >> peekParent [
 	^ self peekWrappedParent ifNotNil: #wrappedNode
 ]
 
 { #category : #'accessing - wrapped' }
-TreeIterator >> peekWrapped [
+TQTreeIterator >> peekWrapped [
 	^ self subclassResponsibility
 ]
 
 { #category : #'accessing - wrapped' }
-TreeIterator >> peekWrappedParent [
+TQTreeIterator >> peekWrappedParent [
 	^ self subclassResponsibility
 ]
 
 { #category : #enumerating }
-TreeIterator >> reject: aBlock [
+TQTreeIterator >> reject: aBlock [
 	^ self reject: aBlock as: Array
 ]
 
 { #category : #enumerating }
-TreeIterator >> reject: aBlock as: aSequenceableCollectionClass [
+TQTreeIterator >> reject: aBlock as: aSequenceableCollectionClass [
 	"Selects nodes of the AST for which aBlock returns false.
 	 Returns these nodes in aSequenceableCollectionClass instance."
 	^ aSequenceableCollectionClass streamContents: [ :stream |
@@ -318,12 +318,12 @@ TreeIterator >> reject: aBlock as: aSequenceableCollectionClass [
 ]
 
 { #category : #enumerating }
-TreeIterator >> select: aBlock [
+TQTreeIterator >> select: aBlock [
 	^ self select: aBlock as: Array
 ]
 
 { #category : #enumerating }
-TreeIterator >> select: aBlock as: aSequenceableCollectionClass [
+TQTreeIterator >> select: aBlock as: aSequenceableCollectionClass [
 	"Select nodes of the AST for which aBlock returns true.
 	 Returns these nodes in aSequenceableCollectionClass instance."
 	^ aSequenceableCollectionClass streamContents: [ :stream |
@@ -333,7 +333,7 @@ TreeIterator >> select: aBlock as: aSequenceableCollectionClass [
 ]
 
 { #category : #enumerating }
-TreeIterator >> sum: aBlock [
+TQTreeIterator >> sum: aBlock [
 	"Evaluate aBlock with each of the receiver's nodes as the argument. 
 	Return the sum of the answers."
 	| sum |
@@ -344,6 +344,6 @@ TreeIterator >> sum: aBlock [
 ]
 
 { #category : #accessing }
-TreeIterator >> upToEnd [
+TQTreeIterator >> upToEnd [
 	^ self collect: #yourself as: Array
 ]

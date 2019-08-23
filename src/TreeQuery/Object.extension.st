@@ -2,7 +2,7 @@ Extension { #name : #Object }
 
 { #category : #'*TreeQuery' }
 Object >> anyIterator: childrenBlock [
-	^ TreeIterator any
+	^ TQTreeIterator any
 			root: self childrenBlock: childrenBlock
 ]
 
@@ -13,13 +13,13 @@ Object >> asTQPredicate [
 
 { #category : #'*TreeQuery' }
 Object >> breadthFirstIterator: childrenBlock [
-	^ TreeIterator breadthFirst
+	^ TQTreeIterator breadthFirst
 			root: self childrenBlock: childrenBlock
 ]
 
 { #category : #'*TreeQuery' }
 Object >> depthFirstIterator: childrenBlock [
-	^ TreeIterator depthFirst
+	^ TQTreeIterator depthFirst
 			root: self childrenBlock: childrenBlock
 ]
 

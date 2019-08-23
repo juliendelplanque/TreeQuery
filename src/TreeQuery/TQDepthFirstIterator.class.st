@@ -26,8 +26,7 @@ TQDepthFirstIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 { #category : #'accessing - wrapped' }
 TQDepthFirstIterator >> nextWrapped [
 	| nextWrapped |
-	self hasNext
-		ifFalse: [ TQIteratorIsAtEnd signalIterator: self ].
+	self checkHasNext.
 	nextWrapped := visitStack pop.
 	(childrenBlock value: nextWrapped wrappedNode) reverseDo: [ :child |
 		visitStack push: (TQNodeWrapper wrap: child parent: nextWrapped) ].
@@ -36,14 +35,12 @@ TQDepthFirstIterator >> nextWrapped [
 
 { #category : #'accessing - wrapped' }
 TQDepthFirstIterator >> peekWrapped [
-	self hasNext
-		ifFalse: [ TQIteratorIsAtEnd signalIterator: self ].
+	self checkHasNext.
 	^ visitStack top
 ]
 
 { #category : #'accessing - wrapped' }
 TQDepthFirstIterator >> peekWrappedParent [
-	self hasNext
-		ifFalse: [ TQIteratorIsAtEnd signalIterator: self ].
+	self checkHasNext.
 	^ visitStack top parent
 ]

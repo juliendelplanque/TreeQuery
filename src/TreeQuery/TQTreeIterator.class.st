@@ -108,15 +108,15 @@ TQTreeIterator >> childrenBlock [
 	^ childrenBlock
 ]
 
-{ #category : #accessing }
-TQTreeIterator >> expectedUpToEndSize [
-	^ Float infinity
-]
-
 { #category : #initialization }
 TQTreeIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 	root := anObject.
 	childrenBlock := aBlock
+]
+
+{ #category : #accessing }
+TQTreeIterator >> maximalUpToEndSize [
+	^ Float infinity
 ]
 
 { #category : #accessing }

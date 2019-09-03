@@ -16,7 +16,7 @@ BaselineOfTreeQuery >> baseline: spec [
 				package: 'TreeQuery-Tests' with: [ spec requires: #('TreeQuery') ].
 			spec
 				baseline: 'Iterators'
-				with: [ spec repository: 'github://juliendelplanque/Iterators:v1.1.0/src' ].
+				with: [ spec repository: 'github://juliendelplanque/Iterators:v1.x.x/src' ].
 			spec
 				group: 'core' with: #('TreeQuery') ]
 ]

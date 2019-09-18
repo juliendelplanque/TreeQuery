@@ -30,7 +30,7 @@ TreeQuery >> breadthFirst [
 
 { #category : #configuring }
 TreeQuery >> checkMatch [
-	self searchStrategyClass: TQMatchesAnywhere
+	self matchAnywhere
 ]
 
 { #category : #configuring }

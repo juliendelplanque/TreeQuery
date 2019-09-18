@@ -6,6 +6,6 @@ Class {
 
 { #category : #searching }
 TQMatchesEverywhere >> search: aTQIterator [
-	^ aTQIterator allSatisfy: [ :node |
+	^ aTQIterator withCollectionAPI allSatisfy: [ :node |
 		self predicate matches: node ]
 ]

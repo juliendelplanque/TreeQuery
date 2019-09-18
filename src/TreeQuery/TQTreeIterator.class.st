@@ -115,13 +115,8 @@ TQTreeIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 ]
 
 { #category : #accessing }
-TQTreeIterator >> maximalUpToEndSize [
-	^ Float infinity
-]
-
-{ #category : #accessing }
 TQTreeIterator >> next [
-	^ self nextWrapped wrappedNode
+	^ self nextWrapped
 ]
 
 { #category : #'accessing - wrapped' }

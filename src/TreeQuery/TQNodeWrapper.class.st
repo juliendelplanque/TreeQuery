@@ -41,6 +41,19 @@ TQNodeWrapper class >> wrap: anObject parent: aTQNodeWrapper [
 		yourself
 ]
 
+{ #category : #comparing }
+TQNodeWrapper >> = anObject [
+	"Answer whether the receiver and anObject represent the same object."
+
+	self == anObject
+		ifTrue: [ ^ true ].
+	self class = anObject class
+		ifFalse: [ ^ false ].
+	^ parent = anObject parent
+		and: [ tqChildrenBlock = anObject childrenBlock
+				and: [ tqNode = anObject wrappedNode ] ]
+]
+
 { #category : #accessing }
 TQNodeWrapper >> childrenBlock [
 	^ tqChildrenBlock
@@ -54,6 +67,13 @@ TQNodeWrapper >> childrenBlock: anObject [
 { #category : #testing }
 TQNodeWrapper >> hasParent [
 	^ self parent isNotNil
+]
+
+{ #category : #comparing }
+TQNodeWrapper >> hash [
+	"Answer an integer value that is related to the identity of the receiver."
+
+	^ parent hash bitXor: (tqChildrenBlock hash bitXor: tqNode hash)
 ]
 
 { #category : #accessing }

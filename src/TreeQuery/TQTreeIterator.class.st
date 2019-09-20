@@ -116,30 +116,15 @@ TQTreeIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 
 { #category : #accessing }
 TQTreeIterator >> next [
-	^ self nextWrapped
-]
-
-{ #category : #'accessing - wrapped' }
-TQTreeIterator >> nextWrapped [
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
 TQTreeIterator >> peek [
-	^ self peekWrapped
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
 TQTreeIterator >> peekParent [
-	^ self peekWrappedParent
-]
-
-{ #category : #'accessing - wrapped' }
-TQTreeIterator >> peekWrapped [
-	^ self subclassResponsibility
-]
-
-{ #category : #'accessing - wrapped' }
-TQTreeIterator >> peekWrappedParent [
 	^ self subclassResponsibility
 ]

@@ -24,7 +24,7 @@ TQBreadthFirstIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 ]
 
 { #category : #'accessing - wrapped' }
-TQBreadthFirstIterator >> nextWrapped [
+TQBreadthFirstIterator >> next [
 	| nextWrapped |
 	self checkHasNext.
 	nextWrapped := visitQueue removeLast.
@@ -34,13 +34,13 @@ TQBreadthFirstIterator >> nextWrapped [
 ]
 
 { #category : #'accessing - wrapped' }
-TQBreadthFirstIterator >> peekWrapped [
+TQBreadthFirstIterator >> peek [
 	self checkHasNext.
 	^ visitQueue last
 ]
 
 { #category : #'accessing - wrapped' }
-TQBreadthFirstIterator >> peekWrappedParent [
+TQBreadthFirstIterator >> peekParent [
 	self checkHasNext.
 	^ visitQueue last parent
 ]

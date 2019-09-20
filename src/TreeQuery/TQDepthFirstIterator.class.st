@@ -24,7 +24,7 @@ TQDepthFirstIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 ]
 
 { #category : #'accessing - wrapped' }
-TQDepthFirstIterator >> nextWrapped [
+TQDepthFirstIterator >> next [
 	| nextWrapped |
 	self checkHasNext.
 	nextWrapped := visitStack pop.
@@ -34,13 +34,13 @@ TQDepthFirstIterator >> nextWrapped [
 ]
 
 { #category : #'accessing - wrapped' }
-TQDepthFirstIterator >> peekWrapped [
+TQDepthFirstIterator >> peek [
 	self checkHasNext.
 	^ visitStack top
 ]
 
 { #category : #'accessing - wrapped' }
-TQDepthFirstIterator >> peekWrappedParent [
+TQDepthFirstIterator >> peekParent [
 	self checkHasNext.
 	^ visitStack top parent
 ]

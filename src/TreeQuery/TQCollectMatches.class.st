@@ -6,7 +6,9 @@ Class {
 
 { #category : #searching }
 TQCollectMatches >> search: aTQIterator [
-	^ ((aTQIterator
+	^ ((((aTQIterator
+			outputTo: TQKeepWrappedNodeDecorator)
 			outputTo: [ :node | self predicate matches: node ] selectIt)
-			outputTo: [ :node | node ] collectIt) upToEnd
+			outputTo: [ :node | node ] collectIt)
+			outputTo: TQUnwrapperDecorator) upToEnd
 ]

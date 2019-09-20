@@ -126,12 +126,12 @@ TQTreeIterator >> nextWrapped [
 
 { #category : #accessing }
 TQTreeIterator >> peek [
-	^ self peekWrapped wrappedNode
+	^ self peekWrapped
 ]
 
 { #category : #accessing }
 TQTreeIterator >> peekParent [
-	^ self peekWrappedParent ifNotNil: #wrappedNode
+	^ self peekWrappedParent
 ]
 
 { #category : #'accessing - wrapped' }

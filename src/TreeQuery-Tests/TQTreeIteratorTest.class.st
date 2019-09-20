@@ -70,7 +70,7 @@ TQTreeIteratorTest >> testNext [
 { #category : #tests }
 TQTreeIteratorTest >> testPeek [
 	self iteratorWalk do: [ :array |
-		self assert: iterator peek first equals: array first.
+		self assert: iterator peek wrappedNode first equals: array first.
 		iterator next ].
 	
 	self should: [ iterator peek ] raise: IteratorIsAtEnd
@@ -79,7 +79,7 @@ TQTreeIteratorTest >> testPeek [
 { #category : #tests }
 TQTreeIteratorTest >> testPeekParent [
 	self iteratorParentWalk do: [ :array |
-		self assert: (iterator peekParent ifNotNil: #first) equals: (array ifNotNil: #first).
+		self assert: (iterator peekParent ifNotNil: [ :p | p wrappedNode first ]) equals: (array ifNotNil: #first).
 		iterator next ].
 	
 	self should: [ iterator peekParent ] raise: IteratorIsAtEnd

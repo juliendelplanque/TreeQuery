@@ -5,8 +5,14 @@ Class {
 		'data',
 		'children'
 	],
-	#category : #'TreeQuery-Query'
+	#category : #'TreeQuery-Deprecated'
 }
+
+{ #category : #deprecation }
+TQNode class >> isDeprecated [
+	<generated>
+	^ true
+]
 
 { #category : #accessing }
 TQNode >> children [

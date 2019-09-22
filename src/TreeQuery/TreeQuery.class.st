@@ -10,6 +10,13 @@ Class {
 }
 
 { #category : #configuring }
+TreeQuery class >> anyWalk [
+	^ self new
+		anyWalk;
+		yourself
+]
+
+{ #category : #configuring }
 TreeQuery class >> breadthFirst [
 	^ self new
 		breadthFirst;
@@ -21,6 +28,12 @@ TreeQuery class >> depthFirst [
 	^ self new
 		depthFirst;
 		yourself
+]
+
+{ #category : #configuring }
+TreeQuery >> anyWalk [
+	"To use when it is not important which walk strategy is used for the query."
+	self breadthFirst
 ]
 
 { #category : #configuring }

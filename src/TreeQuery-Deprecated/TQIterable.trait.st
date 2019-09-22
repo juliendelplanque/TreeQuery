@@ -5,8 +5,14 @@ My users just need to override #childrenSelector returning the selector of the m
 "
 Trait {
 	#name : #TQIterable,
-	#category : #'TreeQuery-Traits'
+	#category : #'TreeQuery-Deprecated'
 }
+
+{ #category : #deprecation }
+TQIterable classSide >> isDeprecated [
+	<generated>
+	^ true
+]
 
 { #category : #accessor }
 TQIterable >> anyIterator [

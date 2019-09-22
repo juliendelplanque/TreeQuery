@@ -2,7 +2,12 @@ Extension { #name : #Object }
 
 { #category : #'*TreeQuery' }
 Object >> asTQPredicate [
-	^ TQObjectEqualityPredicate object: self
+	^ [ :object | object = self ] asTQPredicate
+]
+
+{ #category : #'*TreeQuery' }
+Object >> asTQPredicateIdentity [
+	^ [ :object | object == self ] asTQPredicate
 ]
 
 { #category : #'*TreeQuery' }

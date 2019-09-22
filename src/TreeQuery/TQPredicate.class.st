@@ -9,11 +9,6 @@ Class {
 	#category : #'TreeQuery-Predicates'
 }
 
-{ #category : #extracting }
-TQPredicate >> extract: aTQNodeWrapper [
-	^ self subclassResponsibility
-]
-
 { #category : #testing }
 TQPredicate >> matches: aTQNodeWrapper [
 	^ self subclassResponsibility

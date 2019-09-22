@@ -11,6 +11,6 @@ Class {
 TQObjectIdentityPredicateTest >> testMatches [
 	| object |
 	object := Object new.
-	self assert: ((TQObjectEqualityPredicate object: object) matches: (TQNodeWrapper wrap: object childrenBlock: [ :x | #() ])).
-	self deny: ((TQObjectEqualityPredicate object: object) matches: (TQNodeWrapper wrap: Object new childrenBlock: [ :x | #() ])).
+	self assert: (object asTQPredicateIdentity matches: (TQNodeWrapper wrap: object childrenBlock: [ :x | #() ])).
+	self deny: (object asTQPredicateIdentity matches: (TQNodeWrapper wrap: Object new childrenBlock: [ :x | #() ])).
 ]

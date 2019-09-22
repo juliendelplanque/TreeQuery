@@ -4,8 +4,14 @@ Matches if my #object is identical (i.e I use #==) to the wrapped object in the 
 Class {
 	#name : #TQObjectIdentityPredicate,
 	#superclass : #TQObjectEqualityPredicate,
-	#category : #'TreeQuery-Predicates'
+	#category : #'TreeQuery-Deprecated'
 }
+
+{ #category : #deprecation }
+TQObjectIdentityPredicate class >> isDeprecated [
+	<generated>
+	^ true
+]
 
 { #category : #testing }
 TQObjectIdentityPredicate >> matches: aTQNodeWrapper [

@@ -7,8 +7,14 @@ Class {
 	#instVars : [
 		'object'
 	],
-	#category : #'TreeQuery-Predicates'
+	#category : #'TreeQuery-Deprecated'
 }
+
+{ #category : #deprecation }
+TQObjectEqualityPredicate class >> isDeprecated [
+	<generated>
+	^ true
+]
 
 { #category : #'instance creation' }
 TQObjectEqualityPredicate class >> object: anObject [

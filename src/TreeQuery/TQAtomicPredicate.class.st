@@ -27,13 +27,6 @@ TQAtomicPredicate >> \ aTQPredicate [
 	^ self parentPredicate: aTQPredicate
 ]
 
-{ #category : #extracting }
-TQAtomicPredicate >> extract: aTQNodeWrapper [
-	^ TQNode new
-			data: aTQNodeWrapper wrappedNode;
-			yourself
-]
-
 { #category : #composing }
 TQAtomicPredicate >> parentPredicate: aTQPredicate [
 	^ TQParentPathPredicate path: { self . aTQPredicate }

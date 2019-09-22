@@ -13,6 +13,7 @@ BaselineOfTreeQuery >> baseline: spec [
 			"Packages"
 			spec
 				package: 'TreeQuery' with: [ spec requires: #('Iterators') ];
+				package: 'TreeQuery-Deprecated' with: [ spec requires: #('TreeQuery') ];
 				package: 'TreeQuery-Tests' with: [ spec requires: #('TreeQuery') ].
 			spec
 				baseline: 'Iterators'
@@ -21,6 +22,6 @@ BaselineOfTreeQuery >> baseline: spec [
 						loads: #('core' 'collections' 'shell-dsl' 'inspector-extensions') ];
 				project: 'IteratorsTests' copyFrom: 'Iterators' with: [ spec loads: #('tests') ].
 			spec
-				group: 'core' with: #('TreeQuery');
+				group: 'core' with: #('TreeQuery' 'TreeQuery-Deprecated');
 				group: 'tests' with: #('TreeQuery-Tests' 'IteratorsTests') ]
 ]

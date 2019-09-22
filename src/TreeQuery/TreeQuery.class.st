@@ -42,11 +42,6 @@ TreeQuery >> breadthFirst [
 ]
 
 { #category : #configuring }
-TreeQuery >> checkMatch [
-	self matchAnywhere
-]
-
-{ #category : #configuring }
 TreeQuery >> collectMatches [
 	self searchStrategyClass: TQCollectMatches
 ]
@@ -74,6 +69,11 @@ TreeQuery >> matchAnywhere [
 { #category : #configuring }
 TreeQuery >> matchEverywhere [
 	self searchStrategyClass: TQMatchesEverywhere
+]
+
+{ #category : #configuring }
+TreeQuery >> matchTree [
+	self searchStrategyClass: TQMatchesTree
 ]
 
 { #category : #accessing }

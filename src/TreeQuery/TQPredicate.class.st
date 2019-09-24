@@ -9,6 +9,11 @@ Class {
 	#category : #'TreeQuery-Predicates'
 }
 
+{ #category : #converting }
+TQPredicate >> asTQPredicate [
+	^ self
+]
+
 { #category : #testing }
 TQPredicate >> matches: aTQNodeWrapper [
 	^ self subclassResponsibility

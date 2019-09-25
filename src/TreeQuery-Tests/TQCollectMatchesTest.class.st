@@ -15,7 +15,7 @@ TQCollectMatchesTest >> testSearch [
 		collectMatches;
 		yourself.
 	
-	self assert: (query runOn: tree childrenBlock: #allButFirst) equals: #((2 (2)) (2))
+	self assert: (query runOn: tree childrenBlock: #allButFirst) upToEnd equals: #((2 (2)) (2))
 ]
 
 { #category : #test }
@@ -26,5 +26,5 @@ TQCollectMatchesTest >> testSearch2 [
 		collectMatches;
 		yourself.
 	
-	self assert: (query runOn: tree childrenBlock: #allButFirst) equals: #()
+	self assert: (query runOn: tree childrenBlock: #allButFirst) upToEnd equals: #()
 ]

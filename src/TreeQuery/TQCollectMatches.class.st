@@ -9,5 +9,5 @@ TQCollectMatches >> search: aTQIterator [
 	^ (((aTQIterator
 			outputTo: [ :node | self predicate matches: node ] selectIt)
 			outputTo: [ :node | node ] collectIt)
-			outputTo: TQUnwrapperDecorator) upToEnd
+			outputTo: TQUnwrapperDecorator) withCollectionAPI
 ]

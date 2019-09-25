@@ -30,7 +30,7 @@ spec baseline: 'TreeQuery' with: [
 In the future this section will contain a small tutorial.
 The following examples allow to query the tree below (which is a list of list).
 
-```
+```Smalltalk
 tree := #(1 
 		(2 
 			(2)
@@ -53,7 +53,7 @@ For example, the root of the tree has 3 children whose data are `2`, `4` and `4`
 
 As a first example, we will write a predicate matching a node for which its data is an odd number and has *at least* 2 children for which their data are even number. Such predicate can be written as:
 
-```
+```Smalltalk
 predicate := [ :n | n first odd ] asTQPredicate children: {
 		[ :n | n first even ] asTQPredicate.
 		[ :n | n first even ] asTQPredicate }.
@@ -61,9 +61,9 @@ predicate := [ :n | n first odd ] asTQPredicate children: {
 
 We can now use `TreeQuery` to query the `tree` using the predicate:
 
-```
+```Smalltalk
 TreeQuery breadthFirst
-	checkMatch;
+	matchTree;
 	predicate: predicate;
 	runOn: tree childrenBlock: #allButFirst. "true"
 ```
@@ -73,7 +73,7 @@ The first line creates a new `TreeQuery` that will use a breadth-first iterator 
 > Note: It is also possible to walk the tree depth-first, it might impact performance depending on the tree walked.
 
 > Note 2: It is possible to configure the query for other purpose (line 2). This is called the search strategy of the query. For now, the following strategies are available:
-> - `#checkMatch` returning true if the predicate matched the tree at root,
+> - `#matchTree` returning true if the predicate matched the tree at root,
 > - `#matchAnywhere` returning true if the predicate matched any node of the tree,
 > - `#matchEverywhere` returning true if the predicate matched all nodes of the tree,
 > - `#collectMatches` returning all the nodes that were matched by the predicate.
@@ -95,7 +95,7 @@ Using this new predicate the previous tree still matches because the root has ex
 notMatchingTree := #(1 (2) (2) (2) ).
 
 TreeQuery breadthFirst
-	checkMatch;
+	matchTree;
 	predicate: predicate;
 	runOn: notMatchingTree childrenBlock: #allButFirst. "false"
 ```
@@ -131,7 +131,7 @@ TreeQuery breadthFirst collectMatches
 Is there an abstract class in Pharo that has at least one subclass for which the name begins with `'A'` and one subclass for which the name begins with `'Z'`:
 
 ```Smalltalk
-TreeQuery breadthFirst checkMatch
+TreeQuery breadthFirst matchTree
 	predicate: #isAbstract asTQPredicate
 			children: { 
 				[ :class | class name beginsWith: 'A' ] asTQPredicate.

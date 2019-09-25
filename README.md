@@ -83,7 +83,7 @@ The first line creates a new `TreeQuery` that will use a breadth-first iterator 
 
 The previous predicate allows to match a node for which its data is an odd number and has *at least* 2 children for which their data are even number. It is also possible to require exactly 2 children with even number as data. To do that use the following predicate:
 
-```
+```Smalltalk
 predicate := [ :n | n first odd ] asTQPredicate strictChildren: {
 		[ :n | n first even ] asTQPredicate.
 		[ :n | n first even ] asTQPredicate }.
@@ -91,7 +91,7 @@ predicate := [ :n | n first odd ] asTQPredicate strictChildren: {
 
 Using this new predicate the previous tree still matches because the root has exactly 2 even children. However the tree below does not match anymore:
 
-```
+```Smalltalk
 notMatchingTree := #(1 (2) (2) (2) ).
 
 TreeQuery breadthFirst
@@ -105,14 +105,14 @@ TreeQuery breadthFirst
 It is common that you are just searching for a path in the tree. There are facilities available to build such query.
 For example, the following predicate allows to find paths in the tree with odd number / even number / odd number:
 
-```
+```Smalltalk
 predicate := [ :n | n first odd ] asTQPredicate /
 		[ :n | n first even ] asTQPredicate /
 			[ :n | n first odd ] asTQPredicate.
 ```
 
 Collecting matches of this predicate leads to the following result:
-```
+```Smalltalk
 TreeQuery breadthFirst
 	collectMatches;
 	predicate: predicate;
@@ -122,7 +122,7 @@ TreeQuery breadthFirst
 ### Various examples:
 
 Search all `SystemWindow` morphs in world that hold a Calypso browser:
-```
+```Smalltalk
 TreeQuery breadthFirst collectMatches
 	predicate: [ :m | m class = SystemWindow ] asTQPredicate / [ :m | m isKindOf: ClyBrowserMorph ] asTQPredicate;
 	runOn: World childrenBlock: #submorphs.
@@ -130,7 +130,7 @@ TreeQuery breadthFirst collectMatches
 
 Is there an abstract class in Pharo that has at least one subclass for which the name begins with `'A'` and one subclass for which the name begins with `'Z'`:
 
-```
+```Smalltalk
 TreeQuery breadthFirst checkMatch
 	predicate: #isAbstract asTQPredicate
 			children: { 
@@ -141,7 +141,7 @@ TreeQuery breadthFirst checkMatch
 ```
 
 Get all items from the world menu that have a name (i.e. return value of `#name` is not nil) and the name begins with `T`.
-```
+```Smalltalk
 TreeQuery breadthFirst collectMatches
 	predicate: ([ :menuItem | menuItem name isNotNil and: [ menuItem name beginsWith: 'T' ] ] asTQPredicate);
 	runOn: WorldState new menuBuilder

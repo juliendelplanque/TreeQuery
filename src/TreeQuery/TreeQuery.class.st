@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'predicate',
 		'searchStrategyClass',
-		'iteratorClass'
+		'iteratorClass',
+		'pruningPredicate'
 	],
 	#category : #'TreeQuery-Query'
 }
@@ -51,6 +52,12 @@ TreeQuery >> depthFirst [
 	self iteratorClass: TQTreeIterator depthFirst
 ]
 
+{ #category : #initialization }
+TreeQuery >> initialize [
+	super initialize.
+	self pruningPredicate: [ :node | false ] asTQPredicate
+]
+
 { #category : #accessing }
 TreeQuery >> iteratorClass [
 	^ iteratorClass ifNil: [ iteratorClass := TQTreeIterator any ]
@@ -86,10 +93,23 @@ TreeQuery >> predicate: anObject [
 	predicate := anObject
 ]
 
+{ #category : #accessing }
+TreeQuery >> pruningPredicate [
+	^ pruningPredicate
+]
+
+{ #category : #accessing }
+TreeQuery >> pruningPredicate: anObject [
+	pruningPredicate := anObject
+]
+
 { #category : #running }
 TreeQuery >> runOn: anObject childrenBlock: aBlock [
 	| iterator |
 	iterator := self iteratorClass root: anObject childrenBlock: aBlock.
+	
+	iterator pruningPredicate: self pruningPredicate.
+	
 	^ self searchStrategyClass new
 		predicate: self predicate;
 		search: iterator

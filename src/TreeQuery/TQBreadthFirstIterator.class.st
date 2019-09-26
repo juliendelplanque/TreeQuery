@@ -23,23 +23,27 @@ TQBreadthFirstIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 						yourself
 ]
 
-{ #category : #'accessing - wrapped' }
+{ #category : #accessing }
 TQBreadthFirstIterator >> next [
 	| nextWrapped |
 	self checkHasNext.
-	nextWrapped := visitQueue removeLast.
+	nextWrapped := visitQueue removeLast value.
+	
+	(self pruningPredicate matches: nextWrapped)
+		ifTrue: [ ^ nextWrapped ].
+	
 	(childrenBlock value: nextWrapped wrappedNode) do: [ :child |
 		visitQueue addFirst: (TQNodeWrapper wrap: child childrenBlock: childrenBlock parent: nextWrapped) ].
 	^ nextWrapped
 ]
 
-{ #category : #'accessing - wrapped' }
+{ #category : #accessing }
 TQBreadthFirstIterator >> peek [
 	self checkHasNext.
 	^ visitQueue last
 ]
 
-{ #category : #'accessing - wrapped' }
+{ #category : #accessing }
 TQBreadthFirstIterator >> peekParent [
 	self checkHasNext.
 	^ visitQueue last parent

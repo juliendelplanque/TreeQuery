@@ -23,23 +23,27 @@ TQDepthFirstIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 						yourself
 ]
 
-{ #category : #'accessing - wrapped' }
+{ #category : #accessing }
 TQDepthFirstIterator >> next [
 	| nextWrapped |
 	self checkHasNext.
 	nextWrapped := visitStack pop.
+	
+	(self pruningPredicate matches: nextWrapped)
+		ifTrue: [ ^ nextWrapped ].
+	
 	(childrenBlock value: nextWrapped wrappedNode) reverseDo: [ :child |
 		visitStack push: (TQNodeWrapper wrap: child parent: nextWrapped) ].
 	^ nextWrapped
 ]
 
-{ #category : #'accessing - wrapped' }
+{ #category : #accessing }
 TQDepthFirstIterator >> peek [
 	self checkHasNext.
 	^ visitStack top
 ]
 
-{ #category : #'accessing - wrapped' }
+{ #category : #accessing }
 TQDepthFirstIterator >> peekParent [
 	self checkHasNext.
 	^ visitStack top parent

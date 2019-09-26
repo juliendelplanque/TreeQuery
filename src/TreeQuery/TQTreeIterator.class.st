@@ -11,7 +11,8 @@ Class {
 	#superclass : #Iterator,
 	#instVars : [
 		'childrenBlock',
-		'root'
+		'root',
+		'pruningPredicate'
 	],
 	#category : #'TreeQuery-Core'
 }
@@ -109,6 +110,12 @@ TQTreeIterator >> childrenBlock [
 ]
 
 { #category : #initialization }
+TQTreeIterator >> initialize [
+	super initialize.
+	self pruningPredicate: [ :node | false ] asTQPredicate
+]
+
+{ #category : #initialization }
 TQTreeIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 	root := anObject.
 	childrenBlock := aBlock
@@ -127,4 +134,14 @@ TQTreeIterator >> peek [
 { #category : #accessing }
 TQTreeIterator >> peekParent [
 	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+TQTreeIterator >> pruningPredicate [
+	^ pruningPredicate
+]
+
+{ #category : #accessing }
+TQTreeIterator >> pruningPredicate: anObject [
+	pruningPredicate := anObject
 ]

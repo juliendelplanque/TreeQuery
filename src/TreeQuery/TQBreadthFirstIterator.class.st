@@ -12,13 +12,13 @@ Class {
 
 { #category : #testing }
 TQBreadthFirstIterator >> hasNext [
-	^ visitQueue isNotEmpty
+	^ visitQueue isEmpty not
 ]
 
 { #category : #initialization }
 TQBreadthFirstIterator >> initializeForRoot: anObject childrenBlock: aBlock [
 	super initializeForRoot: anObject childrenBlock: aBlock.
-	visitQueue := LinkedList new
+	visitQueue := DoubleLinkedList new
 						addFirst: (TQNodeWrapper wrap: anObject childrenBlock: aBlock parent: nil);
 						yourself
 ]

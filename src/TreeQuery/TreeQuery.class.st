@@ -48,6 +48,11 @@ TreeQuery >> collectMatches [
 ]
 
 { #category : #configuring }
+TreeQuery >> countMatches [
+	self searchStrategyClass: TQCountMatches
+]
+
+{ #category : #configuring }
 TreeQuery >> depthFirst [
 	self iteratorClass: TQTreeIterator depthFirst
 ]

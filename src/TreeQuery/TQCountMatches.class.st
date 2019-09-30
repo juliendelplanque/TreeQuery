@@ -6,6 +6,7 @@ Class {
 
 { #category : #searching }
 TQCountMatches >> search: aTQIterator [
-	^ (TQCollectMatches new search: aTQIterator)
-		outputTo: (0 injectItInto: [ :sum :current | sum + 1 ])
+	^ ((aTQIterator
+			outputTo: [ :node | self predicate matches: node ] selectIt)
+			outputTo: (0 injectItInto: [ :sum :current | sum + 1 ])) next
 ]

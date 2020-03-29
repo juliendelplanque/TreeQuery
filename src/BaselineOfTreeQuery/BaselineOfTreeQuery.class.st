@@ -25,3 +25,8 @@ BaselineOfTreeQuery >> baseline: spec [
 				group: 'core' with: #('TreeQuery' 'TreeQuery-Deprecated');
 				group: 'tests' with: #('TreeQuery-Tests') ]
 ]
+
+{ #category : #accessing }
+BaselineOfTreeQuery >> projectClass [
+    ^ MetacelloCypressBaselineProject
+]

@@ -124,27 +124,31 @@ TreeQuery breadthFirst
 
 Search all `SystemWindow` morphs in world that hold a Calypso browser:
 ```Smalltalk
-TreeQuery breadthFirst collectMatches
+iterator := TreeQuery breadthFirst collectMatches
 	predicate: [ :m | m class = SystemWindow ] asTQPredicate / [ :m | m isKindOf: ClyBrowserMorph ] asTQPredicate;
 	runOn: World childrenBlock: #submorphs.
+	
+iterator upToEnd.
 ```
 
 Is there an abstract class in Pharo that has at least one subclass for which the name begins with `'A'` and one subclass for which the name begins with `'Z'`:
 
 ```Smalltalk
-TreeQuery breadthFirst matchTree
-	predicate: #isAbstract asTQPredicate
-			children: { 
+TreeQuery breadthFirst matchAnywhere
+	predicate: (#isAbstract asTQPredicate
+			predicatesForChildren: { 
 				[ :class | class name beginsWith: 'A' ] asTQPredicate.
 				[ :class | class name beginsWith: 'Z' ] asTQPredicate
-			};
+			});
 	runOn: Object childrenBlock: #subclasses.
 ```
 
 Get all items from the world menu that have a name (i.e. return value of `#name` is not nil) and the name begins with `T`.
 ```Smalltalk
-TreeQuery breadthFirst collectMatches
+iterator := TreeQuery breadthFirst collectMatches
 	predicate: ([ :menuItem | menuItem name isNotNil and: [ menuItem name beginsWith: 'T' ] ] asTQPredicate);
 	runOn: WorldState new menuBuilder
-	childrenBlock: [ :menuItem | menuItem itemList ifNil: [ #() ] ]. "an Array(a MenuRegistration ( #Tools )  a MenuRegistration ( #'Test Runner' )  a MenuRegistration ( #Transcript )  a MenuRegistration ( #'Time Profiler' )  a MenuRegistration ( #'Toggle full screen mode' ) )"
+	childrenBlock: [ :menuItem | menuItem itemList ifNil: [ #() ] ].
+	
+iterator upToEnd "an Array(a MenuRegistration ( #Tools )  a MenuRegistration ( #'Test Runner' )  a MenuRegistration ( #Transcript )  a MenuRegistration ( #'Time Profiler' )  a MenuRegistration ( #'Toggle full screen mode' ) )"
 ```
